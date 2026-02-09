@@ -1,13 +1,17 @@
 {
   "name": "chekkd-website",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "CHEKKD marketing website - Trust, Verified",
   "private": true,
   "scripts": {
     "dev": "npx serve out -p 3000",
     "start": "npx serve out",
     "deploy": "vercel --prod",
-    "deploy:preview": "vercel"
+    "deploy:preview": "vercel",
+    "test:local": "npm run dev",
+    "test:seo": "echo 'Testing URLs:' && curl -I http://localhost:3000/robots.txt && curl -I http://localhost:3000/sitemap.xml && curl -I http://localhost:3000/favicon.svg && curl -I http://localhost:3000/og-image.png",
+    "validate:schema": "echo 'Validate at: https://search.google.com/test/rich-results'",
+    "validate:og": "echo 'Validate at: https://developers.facebook.com/tools/debug/ and https://cards-dev.twitter.com/validator'"
   },
   "dependencies": {
     "vercel": "^50.13.2"

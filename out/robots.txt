@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Allow AI bots for SEO and search visibility
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://chekkd.com/sitemap.xml
