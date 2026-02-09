@@ -5,9 +5,9 @@ node_modules/
 
 # Build outputs
 .next/
-out/
 build/
 dist/
+# Note: out/ is committed because it contains the pre-built static site for Vercel
 
 # Local env files
 .env
