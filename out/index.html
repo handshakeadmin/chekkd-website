@@ -1746,21 +1746,33 @@ Faster Decisions</h4>
 		<div class="wpb_wrapper">
 			<!-- Social Media Icons -->
 			<style>
+				/* Override WordPress theme column layout */
+				.wpb_wrapper > .chekkd-footer-wrapper {
+					display: flex !important;
+					flex-direction: row !important;
+					align-items: center !important;
+					justify-content: space-between !important;
+					width: 100% !important;
+					padding: 32px 0;
+					gap: 40px;
+				}
 				.chekkd-footer-wrapper {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				width: 100%;
-				padding: 32px 0;
-				gap: 32px;
-			}
-			.chekkd-social-icons {
-				display: flex;
-				gap: 14px;
-				align-items: center;
-				justify-content: flex-start;
-				flex-wrap: wrap;
-			}
+					display: flex !important;
+					flex-direction: row !important;
+					align-items: center !important;
+					justify-content: space-between !important;
+					width: 100%;
+					padding: 32px 0;
+					gap: 40px;
+				}
+				.chekkd-social-icons {
+					display: flex !important;
+					flex-direction: row !important;
+					gap: 12px;
+					align-items: center;
+					justify-content: flex-start;
+					flex-wrap: nowrap;
+				}
 			.chekkd-social-icon {
 				display: inline-flex;
 				align-items: center;
@@ -1823,15 +1835,18 @@ Faster Decisions</h4>
 				white-space: nowrap;
 			}
 			@media (max-width: 768px) {
-				.chekkd-footer-wrapper {
-					flex-direction: column;
-					align-items: center;
-					gap: 24px;
+				.chekkd-footer-wrapper,
+				.wpb_wrapper > .chekkd-footer-wrapper {
+					flex-direction: column !important;
+					align-items: center !important;
+					gap: 24px !important;
 					padding: 24px 0;
 				}
 				.chekkd-social-icons {
-					gap: 14px;
+					flex-direction: row !important;
+					gap: 10px;
 					justify-content: center;
+					flex-wrap: wrap;
 				}
 				.chekkd-social-icon {
 					width: 52px;
