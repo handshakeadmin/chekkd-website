@@ -1799,18 +1799,18 @@ Faster Decisions</h4>
 			.chekkd-copyright {
 				color: #666;
 				font-size: 14px;
-				line-height: 1.8;
+				line-height: 1.6;
 				display: flex;
 				flex-direction: column;
-				gap: 6px;
+				gap: 8px;
 				align-items: flex-end;
 				text-align: right;
 			}
 			.chekkd-footer-links {
 				display: flex;
-				flex-direction: column;
-				gap: 4px;
-				align-items: flex-end;
+				flex-direction: row;
+				gap: 8px;
+				align-items: center;
 			}
 			.chekkd-footer-links a {
 				color: #666;
@@ -1818,9 +1818,13 @@ Faster Decisions</h4>
 				font-size: 14px;
 				transition: color 0.2s ease;
 			}
+			.chekkd-footer-links a:not(:last-child)::after {
+				content: "•";
+				margin-left: 8px;
+				color: #ccc;
+			}
 			.chekkd-footer-links a:hover {
 				color: #8e4aff;
-				text-decoration: none;
 			}
 			.chekkd-copyright-text {
 				white-space: nowrap;
