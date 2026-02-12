@@ -222,7 +222,7 @@ Example: feat(homepage): add hero video background
 ## 📞 Support
 
 For questions or issues:
-- **Email:** admin@letshandshake.io
+- **Email:** support@chekkd.com
 - **Platform:** CHEKKD
 - **Organization:** Handshake
 
