@@ -1807,20 +1807,22 @@ Faster Decisions</h4>
 				text-align: right;
 			}
 			.chekkd-footer-links {
-				display: flex;
-				flex-direction: row;
-				gap: 8px;
+				display: flex !important;
+				flex-direction: row !important;
+				flex-wrap: nowrap !important;
+				gap: 0 !important;
 				align-items: center;
+				white-space: nowrap;
 			}
 			.chekkd-footer-links a {
 				color: #666;
 				text-decoration: none;
 				font-size: 14px;
 				transition: color 0.2s ease;
+				white-space: nowrap;
 			}
 			.chekkd-footer-links a:not(:last-child)::after {
-				content: "•";
-				margin-left: 8px;
+				content: " • ";
 				color: #ccc;
 			}
 			.chekkd-footer-links a:hover {
