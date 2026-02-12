@@ -8,7 +8,11 @@
     <meta name="keywords" content="about chekkd, identity verification, how chekkd works, trustbadge technology, marketplace verification">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://chekkd.com/about.html">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/favicon-192x192.png" sizes="192x192" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#8e4aff">
 
     <!-- Open Graph -->
     <meta property="og:title" content="About CHEKKD - Identity Verification Platform">
@@ -17,214 +21,1188 @@
     <meta property="og:url" content="https://chekkd.com/about.html">
     <meta property="og:type" content="website">
 
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About CHEKKD - Identity Verification Platform">
+    <meta name="twitter:description" content="Learn how CHEKKD makes online transactions safer through instant identity verification and TrustBadge technology.">
+    <meta name="twitter:image" content="https://chekkd.com/og-image.jpg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
+        :root {
+            --primary-purple: #8e4aff;
+            --primary-purple-light: #a66dff;
+            --primary-purple-dark: #7a3ee6;
+            --bg-dark: #0a0a0a;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.06);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --gradient-purple: linear-gradient(135deg, #8e4aff 0%, #b57aff 100%);
+            --gradient-dark: linear-gradient(180deg, #0d0d0d 0%, #0a0a0a 100%);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+            color: var(--text-primary);
+            background: var(--bg-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        .container {
-            max-width: 1200px;
+
+        /* Background effects */
+        .page-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .page-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse 800px 600px at 30% 20%, rgba(142, 74, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse 600px 400px at 70% 80%, rgba(142, 74, 255, 0.1) 0%, transparent 50%);
+            animation: bgFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes bgFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(1deg); }
+            66% { transform: translate(-20px, 20px) rotate(-1deg); }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(10, 10, 10, 0.8);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header.scrolled {
+            padding: 15px 0;
+            background: rgba(10, 10, 10, 0.95);
+        }
+
+        .header-container {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 80px 40px;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 40px;
-            color: #000;
+
+        .logo {
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
         }
-        .back-link:hover {
-            text-decoration: underline;
+
+        .logo img {
+            height: 36px;
+            width: auto;
         }
-        h1 {
-            font-size: 48px;
-            font-weight: 800;
-            color: #1a1a1a;
-            margin-bottom: 60px;
-            text-align: center;
-        }
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 60px;
-            margin-bottom: 80px;
-        }
-        article {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        article:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
+
+        .logo-text {
             font-size: 28px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 20px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
         }
-        p {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #4a4a4a;
-            margin-bottom: 16px;
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
         }
-        p:last-child {
-            margin-bottom: 0;
-        }
-        strong {
-            color: #1a1a1a;
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 15px;
             font-weight: 600;
+            transition: color 0.2s ease;
         }
-        .cta-section {
-            text-align: center;
-            padding: 60px 40px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+        .nav-link:hover {
+            color: var(--text-primary);
         }
-        .cta-section h2 {
-            font-size: 32px;
-            margin-bottom: 24px;
+
+        .nav-link.active {
+            color: var(--primary-purple);
         }
+
         .cta-button {
-            display: inline-block;
-            padding: 16px 32px;
-            background: #000;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            background: var(--gradient-purple);
             color: #fff;
             text-decoration: none;
             border-radius: 100px;
-            font-weight: 600;
-            font-size: 18px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 2px solid var(--primary-purple-light);
+            box-shadow: 0 4px 20px rgba(142, 74, 255, 0.3);
         }
+
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 30px rgba(142, 74, 255, 0.5);
         }
-        footer {
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 2px solid #e0e0e0;
+
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 40px 100px;
             text-align: center;
-            color: #666;
+            position: relative;
         }
-        footer nav {
-            margin-top: 20px;
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(142, 74, 255, 0.15);
+            border: 1px solid rgba(142, 74, 255, 0.3);
+            border-radius: 100px;
+            margin-bottom: 32px;
+            animation: fadeInUp 0.6s ease forwards;
         }
-        footer a {
-            color: #000;
+
+        .hero-badge-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--gradient-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-badge-icon i {
+            font-size: 10px;
+            color: #fff;
+        }
+
+        .hero-badge-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-purple-light);
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.6s ease 0.1s forwards;
+            opacity: 0;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 2vw, 22px);
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 48px;
+            line-height: 1.6;
+            animation: fadeInUp 0.6s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px 100px;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 120px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary-purple);
+            margin-bottom: 16px;
+        }
+
+        .section-label i {
+            font-size: 14px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.85) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .card {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(142, 74, 255, 0.5), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(142, 74, 255, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(142, 74, 255, 0.2) 0%, rgba(142, 74, 255, 0.1) 100%);
+            border: 1px solid rgba(142, 74, 255, 0.3);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            background: var(--gradient-purple);
+            border-color: var(--primary-purple-light);
+            transform: scale(1.05);
+        }
+
+        .card-icon i {
+            font-size: 24px;
+            color: var(--primary-purple);
+            transition: color 0.3s ease;
+        }
+
+        .card:hover .card-icon i {
+            color: #fff;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .card-text {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .card-text strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Feature card - full width */
+        .card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* How It Works Section */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .process-step {
+            position: relative;
+            text-align: center;
+            padding: 32px 24px;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 50px;
+            right: -12px;
+            width: 24px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-purple), transparent);
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 24px rgba(142, 74, 255, 0.4);
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .step-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .stat-card {
+            background: linear-gradient(145deg, rgba(142, 74, 255, 0.1) 0%, rgba(142, 74, 255, 0.02) 100%);
+            border: 1px solid rgba(142, 74, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(142, 74, 255, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .stat-value {
+            font-size: 48px;
+            font-weight: 800;
+            background: var(--gradient-purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* Use Cases Section */
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .use-case-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .use-case-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(142, 74, 255, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .use-case-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(142, 74, 255, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .use-case-icon i {
+            font-size: 22px;
+            color: var(--primary-purple);
+        }
+
+        .use-case-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .use-case-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 80px 60px;
+            background: linear-gradient(145deg, rgba(142, 74, 255, 0.15) 0%, rgba(142, 74, 255, 0.05) 100%);
+            border: 1px solid rgba(142, 74, 255, 0.2);
+            border-radius: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 300px;
+            background: radial-gradient(ellipse at center, rgba(142, 74, 255, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.85) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .cta-section .cta-button {
+            padding: 16px 40px;
+            font-size: 17px;
+            position: relative;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px;
+            border-top: 1px solid var(--border-color);
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
             text-decoration: none;
-            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-purple);
+            border-color: var(--primary-purple);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .social-icon i {
+            font-size: 18px;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
             font-weight: 500;
+            transition: color 0.2s ease;
         }
-        footer a:hover {
-            text-decoration: underline;
+
+        .footer-links a:hover {
+            color: var(--primary-purple);
         }
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 36px;
-                margin-bottom: 40px;
+
+        .copyright {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Animations for scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
             }
-            h2 {
-                font-size: 24px;
-            }
-            .content-grid {
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
                 gap: 40px;
             }
-            article {
-                padding: 30px;
+
+            .process-step::after {
+                display: none;
             }
-            .container {
-                padding: 60px 20px;
+
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .use-cases-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                padding: 40px;
+                gap: 24px;
+                align-items: center;
+                justify-content: flex-start;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero {
+                padding: 140px 20px 60px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .main-content {
+                padding: 0 20px 60px;
+            }
+
+            .section {
+                margin-bottom: 80px;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .process-step {
+                padding: 24px;
+                background: var(--bg-card);
+                border-radius: 16px;
+                border: 1px solid var(--border-color);
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .stat-card {
+                padding: 32px 24px;
+            }
+
+            .stat-value {
+                font-size: 40px;
+            }
+
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 28px;
+            }
+
+            .cta-section {
+                padding: 48px 24px;
+                border-radius: 24px;
+            }
+
+            .footer {
+                padding: 32px 20px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-right {
+                align-items: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .social-icons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .card-title {
+                font-size: 20px;
+            }
+
+            .cta-section h2 {
+                font-size: 24px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="/" class="back-link">← Back to Home</a>
+    <div class="page-bg"></div>
 
-        <h1>About CHEKKD</h1>
-
-        <div class="content-grid">
-            <!-- What is CHEKKD -->
-            <article>
-                <h2>What is CHEKKD?</h2>
-                <p>
-                    CHEKKD is a next-generation <strong>identity verification platform</strong> designed specifically for marketplaces, hiring platforms, and peer-to-peer transactions. Our mission is simple: make every online transaction safer by ensuring you know who you are dealing with before money changes hands.
-                </p>
-                <p>
-                    Unlike traditional background check services that take days and cost hundreds of dollars, CHEKKD delivers instant verification results through our proprietary TrustBadge technology. Whether you are buying a car on Facebook Marketplace, hiring a contractor, or renting out your apartment, CHEKKD gives you peace of mind in seconds.
-                </p>
-            </article>
-
-            <!-- How CHEKKD Works -->
-            <article>
-                <h2>How Identity Verification Works</h2>
-                <p>
-                    Our <strong>identity verification process</strong> combines multiple data points to create a comprehensive trust profile. Users complete a quick verification that includes government ID validation, biometric matching, and behavioral analysis. The result is a verified TrustBadge that can be shared across any platform.
-                </p>
-                <p>
-                    For businesses and platforms, CHEKKD offers seamless API integration that adds verification capabilities without disrupting user experience. Our system processes thousands of verifications per second while maintaining bank-level security and full compliance with data protection regulations.
-                </p>
-            </article>
-
-            <!-- Who Uses CHEKKD -->
-            <article>
-                <h2>Who Uses CHEKKD?</h2>
-                <p>
-                    <strong>Marketplace platforms</strong> integrate CHEKKD to reduce fraud and build buyer confidence. When users see a verified TrustBadge, conversion rates increase by up to 40% because trust removes friction from transactions.
-                </p>
-                <p>
-                    <strong>Individual sellers and buyers</strong> use CHEKKD to protect themselves in peer-to-peer transactions. Before meeting a stranger from Craigslist or accepting a rental application, smart users verify identity first.
-                </p>
-                <p>
-                    <strong>Hiring platforms and employers</strong> rely on CHEKKD for streamlined candidate verification. Our instant checks replace weeks of waiting, helping companies onboard faster while maintaining compliance.
-                </p>
-            </article>
-
-            <!-- Why Choose CHEKKD -->
-            <article>
-                <h2>Why Choose CHEKKD?</h2>
-                <p>
-                    Online scams cost consumers over $30 billion annually, and marketplace fraud accounts for $12 billion of that loss. CHEKKD exists to change these statistics by making verification accessible, affordable, and instant.
-                </p>
-                <p>
-                    Our platform stands out through <strong>speed</strong> (verification in seconds, not days), <strong>portability</strong> (one verification works across multiple platforms), and <strong>privacy</strong> (users control what information is shared). We believe trust should be universal, not siloed.
-                </p>
-                <p>
-                    Join thousands of users who have already made their transactions safer with CHEKKD. Sign up for our waitlist today and be among the first to experience the future of identity verification.
-                </p>
-            </article>
-        </div>
-
-        <div class="cta-section">
-            <h2>Ready to Make Your Transactions Safer?</h2>
-            <a href="https://chekkdlounge.com/s/matthew-schwen" class="cta-button">Join the Waitlist</a>
-        </div>
-
-        <footer>
-            <p>© 2026 CHEKKD. All rights reserved.</p>
-            <nav>
-                <a href="/">Home</a>
-                <a href="/about.html">About</a>
-                <a href="/privacy-policy.html">Privacy Policy</a>
-                <a href="/terms-of-service.html">Terms of Service</a>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="/images/chekkd-logo-1200x1200.png" alt="CHEKKD Logo">
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/about.html" class="nav-link active">About</a>
+                <a href="https://chekkdlounge.com/s/matthew-schwen" class="cta-button">Join Waitlist</a>
             </nav>
-        </footer>
-    </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">
+            <div class="hero-badge-icon">
+                <i class="fas fa-shield-halved"></i>
+            </div>
+            <span class="hero-badge-text">About Our Platform</span>
+        </div>
+        <h1>Building Trust in Every Transaction</h1>
+        <p class="hero-subtitle">
+            CHEKKD is revolutionizing how people verify identity online. Our mission is to make every peer-to-peer transaction safer, faster, and more trustworthy.
+        </p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- What is CHEKKD Section -->
+        <section class="section reveal">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fas fa-sparkles"></i>
+                    Our Mission
+                </div>
+                <h2 class="section-title">What is CHEKKD?</h2>
+                <p class="section-description">
+                    A next-generation identity verification platform designed specifically for marketplaces, hiring platforms, and peer-to-peer transactions.
+                </p>
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="card-title">Instant Verification</h3>
+                    <p class="card-text">
+                        Unlike traditional background check services that take days and cost hundreds of dollars, CHEKKD delivers <strong>instant verification results</strong> through our proprietary TrustBadge technology. Know who you are dealing with before money changes hands.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <h3 class="card-title">Universal Trust</h3>
+                    <p class="card-text">
+                        Whether you are buying a car on Facebook Marketplace, hiring a contractor, or renting out your apartment, <strong>CHEKKD gives you peace of mind in seconds</strong>. One verification works across multiple platforms.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="section reveal">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fas fa-gears"></i>
+                    The Process
+                </div>
+                <h2 class="section-title">How Identity Verification Works</h2>
+                <p class="section-description">
+                    Our verification process combines multiple data points to create a comprehensive trust profile in just minutes.
+                </p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">ID Validation</h3>
+                    <p class="step-description">Government-issued ID verification with advanced document analysis</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Biometric Match</h3>
+                    <p class="step-description">Facial recognition technology ensures the person matches their ID</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Trust Analysis</h3>
+                    <p class="step-description">Behavioral analysis and data cross-referencing for complete profiles</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">TrustBadge</h3>
+                    <p class="step-description">Receive your verified badge to share across any platform instantly</p>
+                </div>
+            </div>
+            <div class="cards-grid" style="margin-top: 48px;">
+                <div class="card full-width">
+                    <div class="card-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="card-title">Enterprise-Grade Security</h3>
+                    <p class="card-text">
+                        For businesses and platforms, CHEKKD offers seamless <strong>API integration</strong> that adds verification capabilities without disrupting user experience. Our system processes <strong>thousands of verifications per second</strong> while maintaining bank-level security and full compliance with data protection regulations including GDPR and CCPA.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="section reveal">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fas fa-chart-line"></i>
+                    The Problem We Solve
+                </div>
+                <h2 class="section-title">Why Trust Matters</h2>
+                <p class="section-description">
+                    Online fraud is a massive problem affecting millions of people every year. CHEKKD is here to change that.
+                </p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">$30B+</div>
+                    <div class="stat-label">Annual consumer fraud losses</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$12B</div>
+                    <div class="stat-label">Marketplace fraud specifically</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">40%</div>
+                    <div class="stat-label">Increase in conversion with TrustBadge</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who Uses CHEKKD Section -->
+        <section class="section reveal">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fas fa-users"></i>
+                    Use Cases
+                </div>
+                <h2 class="section-title">Who Uses CHEKKD?</h2>
+                <p class="section-description">
+                    From individual sellers to enterprise platforms, CHEKKD serves anyone who needs to establish trust quickly.
+                </p>
+            </div>
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3 class="use-case-title">Marketplace Platforms</h3>
+                    <p class="use-case-text">
+                        Integrate CHEKKD to reduce fraud and build buyer confidence. When users see a verified TrustBadge, conversion rates increase significantly.
+                    </p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 class="use-case-title">Individual Buyers & Sellers</h3>
+                    <p class="use-case-text">
+                        Protect yourself in peer-to-peer transactions. Before meeting a stranger or accepting a rental application, verify identity first.
+                    </p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="use-case-title">Hiring & HR Platforms</h3>
+                    <p class="use-case-text">
+                        Streamlined candidate verification replaces weeks of waiting, helping companies onboard faster while maintaining compliance.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose CHEKKD Section -->
+        <section class="section reveal">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fas fa-star"></i>
+                    Our Difference
+                </div>
+                <h2 class="section-title">Why Choose CHEKKD?</h2>
+                <p class="section-description">
+                    We believe trust should be universal, not siloed. Here is what sets us apart.
+                </p>
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="card-title">Speed</h3>
+                    <p class="card-text">
+                        Verification in <strong>seconds, not days</strong>. Our advanced technology delivers instant results so you can move forward with confidence immediately. No more waiting for background checks.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-arrows-rotate"></i>
+                    </div>
+                    <h3 class="card-title">Portability</h3>
+                    <p class="card-text">
+                        <strong>One verification works across multiple platforms</strong>. Get verified once and use your TrustBadge anywhere. No need to repeat the process for every new transaction or platform.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="card-title">Privacy</h3>
+                    <p class="card-text">
+                        <strong>Users control what information is shared</strong>. We use bank-level encryption and never sell your data. You decide exactly what to reveal in each transaction.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3 class="card-title">Affordability</h3>
+                    <p class="card-text">
+                        <strong>Enterprise-grade verification at consumer prices</strong>. Traditional background checks cost hundreds. CHEKKD makes comprehensive verification accessible to everyone.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section reveal">
+            <h2>Ready to Make Your Transactions Safer?</h2>
+            <p>Join thousands of users who have already made their transactions safer with CHEKKD.</p>
+            <a href="https://chekkdlounge.com/s/matthew-schwen" class="cta-button">
+                Join the Waitlist
+                <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+            </a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/share/18HvpV8Q85/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Follow CHEKKD on Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com/chekkdapp" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Follow CHEKKD on Twitter/X">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com/chekkdapp" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Follow CHEKKD on Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://threads.net/@chekkdapp" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Follow CHEKKD on Threads">
+                    <i class="fab fa-threads"></i>
+                </a>
+                <a href="https://www.tiktok.com/@chekkdapp" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Follow CHEKKD on TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://youtube.com/@chekkd" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Subscribe to CHEKKD on YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://reddit.com/u/chekkd" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Follow CHEKKD on Reddit">
+                    <i class="fab fa-reddit-alien"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/chekkd/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Connect with CHEKKD on LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            <div class="footer-right">
+                <div class="footer-links">
+                    <a href="/">Home</a>
+                    <a href="/about.html">About</a>
+                    <a href="/privacy-policy.html">Privacy Policy</a>
+                    <a href="/terms-of-service.html">Terms of Service</a>
+                </div>
+                <div class="copyright">
+                    &copy; 2026 CHEKKD. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 150;
+
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Staggered animation for cards
+        const cards = document.querySelectorAll('.card, .use-case-card, .stat-card, .process-step');
+        cards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+    </script>
 </body>
 </html>
