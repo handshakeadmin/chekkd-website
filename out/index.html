@@ -1788,27 +1788,35 @@ Faster Decisions</h4>
 					color: #666;
 					font-size: 14px;
 					line-height: 1.6;
-					text-align: right;
 					display: flex;
-					flex-direction: column;
-					gap: 12px;
-					align-items: flex-end;
+					flex-direction: row;
+					gap: 24px;
+					align-items: center;
+					justify-content: flex-end;
+					flex-wrap: wrap;
 				}
 				.chekkd-footer-links {
 					display: flex;
 					gap: 20px;
-					flex-wrap: wrap;
-					justify-content: flex-end;
+					flex-wrap: nowrap;
+					align-items: center;
 				}
 				.chekkd-footer-links a {
 					color: #666;
 					text-decoration: none;
 					font-size: 14px;
 					transition: color 0.2s ease;
+					position: relative;
+				}
+				.chekkd-footer-links a:not(:last-child)::after {
+					content: "•";
+					position: absolute;
+					right: -12px;
+					color: #ddd;
 				}
 				.chekkd-footer-links a:hover {
-					color: #000;
-					text-decoration: underline;
+					color: #8e4aff;
+					text-decoration: none;
 				}
 				@media (max-width: 768px) {
 					.chekkd-footer-wrapper {
@@ -1828,12 +1836,14 @@ Faster Decisions</h4>
 						font-size: 24px;
 					}
 					.chekkd-copyright {
-						text-align: center;
+						flex-direction: column;
+						gap: 16px;
+						justify-content: center;
 						font-size: 13px;
-						align-items: center;
 					}
 					.chekkd-footer-links {
 						justify-content: center;
+						flex-wrap: wrap;
 						gap: 16px;
 					}
 					.chekkd-footer-links a {
