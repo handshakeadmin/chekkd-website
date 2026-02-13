@@ -1,6 +1,14 @@
 {
   "buildCommand": null,
   "outputDirectory": "out",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.chekkd.com" }],
+      "destination": "https://chekkd.com/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/contact", "destination": "/contact/index.html" },
     { "source": "/(.*)", "destination": "/$1" }
