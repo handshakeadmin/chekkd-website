@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://chekkd.com/</loc>
-    <lastmod>2026-02-10</lastmod>
+    <lastmod>2026-02-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://chekkd.com/images/chekkd-logo-1200x1200.png</image:loc>
       <image:title>CHEKKD Logo - Identity Verification Platform</image:title>
     </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/ATnCkl80vO0/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>CHEKKD - Avoid Internet Scams</video:title>
+      <video:description>Join the CHEKKD waiting list to avoid internet scams with instant identity verification.</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=ATnCkl80vO0</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/ATnCkl80vO0</video:player_loc>
+      <video:duration>600</video:duration>
+      <video:view_count>6026</video:view_count>
+      <video:publication_date>2026-02-08</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://chekkd.com/about.html</loc>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chekkd.com/privacy-policy.html</loc>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://chekkd.com/terms-of-service.html</loc>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
