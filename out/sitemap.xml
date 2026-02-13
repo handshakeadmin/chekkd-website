@@ -3,12 +3,12 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
-    <loc>https://chekkd.com/</loc>
+    <loc>https://www.chekkd.com/</loc>
     <lastmod>2026-02-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://chekkd.com/images/chekkd-logo-1200x1200.png</image:loc>
+      <image:loc>https://www.chekkd.com/images/chekkd-logo-1200x1200.png</image:loc>
       <image:title>CHEKKD Logo - Identity Verification Platform</image:title>
     </image:image>
     <video:video>
@@ -25,19 +25,19 @@
     </video:video>
   </url>
   <url>
-    <loc>https://chekkd.com/about.html</loc>
+    <loc>https://www.chekkd.com/about.html</loc>
     <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://chekkd.com/privacy-policy.html</loc>
+    <loc>https://www.chekkd.com/privacy-policy.html</loc>
     <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://chekkd.com/terms-of-service.html</loc>
+    <loc>https://www.chekkd.com/terms-of-service.html</loc>
     <lastmod>2026-02-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

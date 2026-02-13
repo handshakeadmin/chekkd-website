@@ -20,4 +20,4 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-Sitemap: https://chekkd.com/sitemap.xml
+Sitemap: https://www.chekkd.com/sitemap.xml
