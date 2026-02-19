@@ -8,6 +8,7 @@
     <meta name="keywords" content="CHEKKD team, CHEKKD founders, Shaun Kimball, Jon Sanderson, Matthew Schwen, identity verification team, startup leadership">
     <meta name="robots" content="index, follow">
     <meta name="author" content="CHEKKD">
+    <meta name="theme-color" content="#6B05FE">
     <link rel="canonical" href="https://www.chekkd.com/team.html">
 
     <!-- Favicons -->
@@ -52,40 +53,25 @@
                     "@type": "Person",
                     "name": "Shaun Kimball",
                     "jobTitle": "Founder & CEO",
-                    "description": "Repeat founder operating at the intersection of digital identity, blockchain, and fintech. Previously founded Nomyx and SOS Supply.",
-                    "worksFor": {
-                        "@type": "Organization",
-                        "name": "CHEKKD"
-                    }
+                    "worksFor": { "@type": "Organization", "name": "CHEKKD" }
                 },
                 {
                     "@type": "Person",
                     "name": "Jon Sanderson",
-                    "jobTitle": "Co-Founder & COO",
-                    "description": "Growth and operations executive with 15+ years scaling performance-driven marketing organizations across B2B and infrastructure-focused technology companies.",
-                    "worksFor": {
-                        "@type": "Organization",
-                        "name": "CHEKKD"
-                    }
+                    "jobTitle": "Chief Strategy Officer (CSO)",
+                    "worksFor": { "@type": "Organization", "name": "CHEKKD" }
                 },
                 {
                     "@type": "Person",
                     "name": "Matthew Schwen",
                     "jobTitle": "Co-Founder & CTO",
-                    "description": "Veteran infrastructure and automation leader with two decades of experience building large-scale networks for Oracle, Humana, Adobe, Symantec, and The Trade Desk.",
-                    "worksFor": {
-                        "@type": "Organization",
-                        "name": "CHEKKD"
-                    }
+                    "worksFor": { "@type": "Organization", "name": "CHEKKD" }
                 }
             ],
             "sameAs": [
                 "https://twitter.com/chekkdapp",
                 "https://instagram.com/chekkdapp",
-                "https://www.linkedin.com/company/chekkd/",
-                "https://www.facebook.com/share/18HvpV8Q85/",
-                "https://www.tiktok.com/@chekkdapp",
-                "https://youtube.com/@chekkd"
+                "https://www.linkedin.com/company/chekkd/"
             ]
         }
     }
@@ -101,7 +87,6 @@
             font-style: normal;
             font-display: swap;
         }
-
         @font-face {
             font-family: 'Stara';
             src: url('/fonts/Stara-SemiBold.woff2') format('woff2'),
@@ -110,7 +95,6 @@
             font-style: normal;
             font-display: swap;
         }
-
         @font-face {
             font-family: 'Stara';
             src: url('/fonts/Stara-Bold.woff2') format('woff2'),
@@ -119,7 +103,6 @@
             font-style: normal;
             font-display: swap;
         }
-
         @font-face {
             font-family: 'Stara';
             src: url('/fonts/Stara-ExtraBold.woff2') format('woff2'),
@@ -130,7 +113,365 @@
         }
     </style>
 
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Signup Modal Styles -->
+    <style>
+        .chekkd-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            opacity: 0;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 20px;
+        }
+        .chekkd-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .chekkd-modal-container {
+            position: relative;
+            width: 100%;
+            max-width: 520px;
+            background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+            border: 1px solid rgba(142, 74, 255, 0.2);
+            border-radius: 28px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: scale(0.92) translateY(30px);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+        .chekkd-modal-overlay.active .chekkd-modal-container {
+            transform: scale(1) translateY(0);
+        }
+        .chekkd-modal-bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse 800px 400px at 50% -20%, rgba(142, 74, 255, 0.25) 0%, transparent 60%), linear-gradient(180deg, rgba(142, 74, 255, 0.08) 0%, transparent 100%);
+            border-radius: 28px;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .chekkd-modal-content {
+            position: relative;
+            z-index: 2;
+            padding: 52px 48px 48px;
+            color: #fff;
+        }
+        .chekkd-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 3;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .chekkd-modal-close:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(142, 74, 255, 0.4);
+            transform: rotate(90deg) scale(1.05);
+            box-shadow: 0 6px 16px rgba(142, 74, 255, 0.3);
+        }
+        .chekkd-modal-close:before, .chekkd-modal-close:after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 1.5px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 2px;
+            transition: background 0.3s ease;
+        }
+        .chekkd-modal-close:hover:before, .chekkd-modal-close:hover:after {
+            background: #8e4aff;
+        }
+        .chekkd-modal-close:before { transform: rotate(45deg); }
+        .chekkd-modal-close:after { transform: rotate(-45deg); }
+        .chekkd-form-logo {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 24px;
+        }
+        .chekkd-modal-heading {
+            font-family: 'Stara', sans-serif;
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0 0 32px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.03em;
+        }
+        .chekkd-modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .chekkd-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .chekkd-form-field {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .chekkd-form-field label {
+            font-family: 'Stara', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.95);
+            letter-spacing: -0.01em;
+        }
+        .chekkd-form-field input {
+            width: 100%;
+            padding: 14px 16px;
+            font-family: 'Stara', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+            box-shadow: 0px 2px 3px -1px rgba(0, 0, 0, 0.3), 0px 1px 0px 0px rgba(142, 74, 255, 0.05), 0px 0px 0px 1px rgba(142, 74, 255, 0.08);
+        }
+        .chekkd-form-field input:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(142, 74, 255, 0.15);
+        }
+        .chekkd-form-field input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.06);
+            border-color: #8e4aff;
+            box-shadow: 0px 2px 3px -1px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(142, 74, 255, 0.15), 0px 0px 0px 1px #8e4aff;
+        }
+        .chekkd-form-field input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+            font-weight: 400;
+        }
+        .chekkd-form-field.error input {
+            border-color: #ff4757;
+            background: rgba(255, 71, 87, 0.08);
+            box-shadow: 0 0 0 4px rgba(255, 71, 87, 0.15);
+        }
+        .chekkd-form-field .error-message {
+            font-family: 'Stara', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #ff6b7a;
+            margin-top: 2px;
+            display: none;
+        }
+        .chekkd-form-field.error .error-message {
+            display: block;
+        }
+        .chekkd-modal-submit {
+            width: 100%;
+            padding: 14px 24px;
+            margin-top: 12px;
+            font-family: 'Stara', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #fff;
+            background: linear-gradient(135deg, #8e4aff 0%, #7a3ee6 100%);
+            border: 2px solid #a66dff;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 0 30px rgba(142, 74, 255, 0.5), 0 8px 20px rgba(142, 74, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        .chekkd-modal-submit:hover {
+            background: linear-gradient(135deg, #9d5aff 0%, #8e4aff 100%);
+            border-color: #b47dff;
+            box-shadow: 0 0 40px rgba(142, 74, 255, 0.7), 0 10px 30px rgba(142, 74, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        .chekkd-modal-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .chekkd-modal-submit .arrow-icon {
+            width: 18px;
+            height: 18px;
+            color: #fff;
+            transition: transform 0.2s ease;
+        }
+        .chekkd-modal-submit:hover .arrow-icon {
+            transform: translateX(3px);
+        }
+        .chekkd-modal-submit.loading {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        .chekkd-modal-success {
+            display: none;
+            text-align: center;
+            padding: 48px 24px;
+        }
+        .chekkd-modal-success.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .chekkd-modal-success .success-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8e4aff 0%, #6B05FE 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+        }
+        .chekkd-modal-success .success-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: #fff;
+        }
+        .chekkd-modal-success h3 {
+            font-family: 'Stara', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 0 16px;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+        .chekkd-modal-success p {
+            font-family: 'Stara', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0 0 24px;
+            max-width: 320px;
+            line-height: 1.5;
+        }
+        .chekkd-modal-success .success-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 100px;
+            color: #fff;
+            font-family: 'Stara', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .chekkd-modal-success .success-cta:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        .chekkd-modal-disclaimer {
+            font-family: 'Stara', sans-serif;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.55);
+            text-align: center;
+            margin-top: 20px;
+            line-height: 1.7;
+        }
+        @media only screen and (max-width: 690px) {
+            .chekkd-form-row {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .chekkd-modal-overlay {
+                padding: 8px;
+                align-items: flex-start;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .chekkd-modal-container {
+                border-radius: 16px;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                max-height: none;
+            }
+            .chekkd-modal-content {
+                padding: 40px 20px 24px;
+            }
+            .chekkd-form-logo {
+                max-width: 140px;
+                margin-bottom: 12px;
+            }
+            .chekkd-modal-heading {
+                font-size: 24px;
+                margin-bottom: 16px;
+            }
+            .chekkd-modal-form {
+                gap: 12px;
+            }
+            .chekkd-form-field {
+                gap: 4px;
+            }
+            .chekkd-form-field label {
+                font-size: 14px;
+            }
+            .chekkd-form-field input {
+                padding: 12px 14px;
+                font-size: 16px !important;
+                min-height: auto;
+                border-radius: 8px;
+            }
+            .chekkd-form-field input::placeholder {
+                font-size: 16px !important;
+            }
+            .chekkd-modal-submit {
+                font-size: 15px;
+                padding: 12px 18px;
+                margin-top: 8px;
+            }
+            .chekkd-modal-close {
+                width: 36px;
+                height: 36px;
+                top: 10px;
+                right: 10px;
+            }
+            .chekkd-modal-disclaimer {
+                font-size: 12px;
+                margin-top: 12px;
+            }
+        }
+    </style>
 
     <style>
         * {
@@ -139,347 +480,528 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+            font-family: 'Stara', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fff;
             min-height: 100vh;
-            color: #fff;
+            color: #1a1a2e;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 24px 60px;
+            padding: 0 24px;
         }
 
-        /* Back Button */
-        .back-link {
-            display: inline-flex;
+        /* Header */
+        .header {
+            padding: 16px 0;
+            background: transparent;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 12px;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            margin-bottom: 48px;
-            transition: opacity 0.2s ease;
         }
 
-        .back-link:hover {
-            opacity: 0.8;
-        }
-
-        .back-link svg {
-            width: 20px;
-            height: 20px;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .back-link img {
-            height: 48px;
+        .logo-link img {
+            height: 28px;
             width: auto;
         }
 
-        /* Page Header */
-        .page-header {
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a1a2e;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            color: #6B05FE;
+        }
+
+        .back-home svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-home:hover svg {
+            transform: translateX(-4px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 48px 0 24px;
             text-align: center;
-            margin-bottom: 64px;
         }
 
-        .page-header h1 {
-            font-family: 'Stara', 'Open Sans', sans-serif;
-            font-size: clamp(36px, 7vw, 56px);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.85) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero h1 {
+            font-size: clamp(48px, 10vw, 88px);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            color: #1a1a2e;
         }
 
-        .page-header p {
+        /* Team Section - Circular Grid */
+        .team-section {
+            padding: 40px 0 80px;
+        }
+
+        .team-intro {
+            text-align: center;
             font-size: 18px;
-            color: rgba(255, 255, 255, 0.6);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 60px;
         }
 
-        /* Team Grid */
         .team-grid {
             display: flex;
-            flex-direction: column;
-            gap: 32px;
-            margin-bottom: 48px;
-        }
-
-        /* Team Member Card */
-        .team-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 40px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .team-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #6B05FE 0%, #B63DD4 50%, #29AECC 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .team-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(142, 74, 255, 0.3);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(107, 5, 254, 0.15);
-        }
-
-        .team-card:hover::before {
-            opacity: 1;
-        }
-
-        .team-card-inner {
-            display: flex;
-            gap: 32px;
-            align-items: flex-start;
-        }
-
-        /* Photo Placeholder */
-        .team-photo {
-            flex-shrink: 0;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #43198C 0%, #6B05FE 50%, #B63DD4 100%);
-            display: flex;
-            align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
+            gap: 60px;
+            flex-wrap: wrap;
         }
 
-        .team-photo::after {
-            content: '';
-            position: absolute;
-            inset: 3px;
-            border-radius: 50%;
-            background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 100%);
+        .team-member {
+            text-align: center;
+            cursor: pointer;
         }
 
-        .team-photo-initials {
+        .member-photo {
+            width: 200px;
+            height: 200px;
             position: relative;
-            z-index: 1;
-            font-family: 'Stara', 'Open Sans', sans-serif;
-            font-size: 42px;
-            font-weight: 700;
-            color: #fff;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
         }
 
-        .team-photo img {
-            position: relative;
-            z-index: 2;
+        .member-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
+            border: 3px solid #1a1a2e;
+            transition: all 0.3s ease;
         }
 
-        /* Team Info */
-        .team-info {
-            flex: 1;
+        .team-member:hover .member-photo img {
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(107, 5, 254, 0.2);
         }
 
-        .team-name {
-            font-family: 'Stara', 'Open Sans', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 4px;
+        .member-arrow {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            background: #fff;
+            border: 2px solid #1a1a2e;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .member-arrow svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .member-arrow:hover,
+        .team-member:hover .member-arrow {
+            background: #6B05FE;
+            border-color: #6B05FE;
+        }
+
+        .member-arrow:hover svg,
+        .team-member:hover .member-arrow svg {
             color: #fff;
+            stroke: #fff;
         }
 
-        .team-role {
-            font-family: 'Stara', 'Open Sans', sans-serif;
-            font-size: 16px;
+        .member-name {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+
+        .member-role {
+            font-size: 14px;
             font-weight: 500;
-            color: #8e4aff;
-            margin-bottom: 20px;
-            letter-spacing: 0.02em;
+            color: #666;
+            margin-top: 4px;
         }
 
-        .team-bio {
+        /* Modal */
+        .team-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+        }
+
+        .team-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            position: relative;
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            max-width: 1000px;
+            width: 92%;
+            max-height: 85vh;
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            background: #f5f5f5;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: #333;
+        }
+
+        .modal-close:hover {
+            background: #e0e0e0;
+            transform: rotate(90deg);
+        }
+
+        .modal-photo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            padding: 32px;
+            min-height: 500px;
+        }
+
+        .modal-photo-bg {
+            display: none;
+        }
+
+        .modal-photo img {
+            width: 100%;
+            height: auto;
+            max-height: 520px;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .modal-info {
+            padding: 60px 40px 40px;
+            overflow-y: auto;
+            max-height: 85vh;
+        }
+
+        .modal-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a2e;
+            letter-spacing: -0.02em;
+        }
+
+        .modal-role {
+            font-size: 14px;
+            font-weight: 600;
+            color: #6B05FE;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .modal-bio {
+            margin-top: 24px;
+        }
+
+        .modal-bio p {
             font-size: 15px;
-            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
             line-height: 1.8;
-        }
-
-        .team-bio p {
+            color: #555;
             margin-bottom: 16px;
         }
 
-        .team-bio p:last-child {
+        .modal-bio p:last-child {
             margin-bottom: 0;
         }
 
-        .team-bio strong {
-            color: #fff;
-            font-weight: 600;
-        }
-
-        /* Experience Tags */
-        .experience-tags {
+        .modal-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 24px;
         }
 
-        .experience-tag {
-            padding: 6px 14px;
-            background: rgba(107, 5, 254, 0.15);
-            border: 1px solid rgba(107, 5, 254, 0.3);
-            border-radius: 20px;
+        .modal-tag {
+            padding: 10px 16px;
             font-size: 12px;
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.8);
-            letter-spacing: 0.02em;
+            color: #1a1a2e;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            transition: all 0.2s ease;
         }
 
-        /* Combined Experience Section */
-        .experience-section {
-            background: linear-gradient(135deg, rgba(107, 5, 254, 0.1) 0%, rgba(182, 61, 212, 0.1) 100%);
-            border: 1px solid rgba(107, 5, 254, 0.2);
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 48px;
-            text-align: center;
+        .modal-tag:hover {
+            background: rgba(107, 5, 254, 0.08);
+            border-color: rgba(107, 5, 254, 0.2);
+            color: #6B05FE;
         }
 
-        .experience-section h2 {
-            font-family: 'Stara', 'Open Sans', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 24px;
+        .modal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .modal-header-left {
+            flex: 1;
+        }
+
+        .modal-linkedin {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: #0077b5;
             color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
         }
 
-        .experience-stats {
+        .modal-linkedin:hover {
+            background: #005f8f;
+            transform: translateY(-2px);
+        }
+
+        .modal-linkedin svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Product Section */
+        .product-section {
+            padding: 60px 0;
+            background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+        }
+
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .exp-stat {
-            text-align: center;
+        .product-content h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: #1a1a2e;
         }
 
-        .exp-stat-number {
-            font-family: 'Stara', 'Open Sans', sans-serif;
-            font-size: clamp(28px, 5vw, 40px);
-            font-weight: 800;
-            background: linear-gradient(135deg, #6B05FE 0%, #B63DD4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 4px;
+        .product-content p {
+            font-size: 16px;
+            font-weight: 500;
+            color: #555;
+            line-height: 1.75;
         }
 
-        .exp-stat-label {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.4;
+        .product-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .product-image img {
+            max-width: 300px;
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(107, 5, 254, 0.15);
         }
 
         /* CTA Section */
         .cta-section {
+            padding: 64px 24px;
             text-align: center;
-            margin-top: 64px;
-            padding: 48px 32px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
+            background: linear-gradient(135deg, #8B5CF6 0%, #D946EF 100%);
         }
 
-        .cta-section h3 {
-            font-family: 'Stara', 'Open Sans', sans-serif;
-            font-size: clamp(24px, 4vw, 32px);
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: clamp(32px, 5vw, 48px);
             font-weight: 700;
             margin-bottom: 16px;
+            letter-spacing: -0.02em;
             color: #fff;
         }
 
-        .cta-section p {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 28px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+        .cta-content p {
+            font-size: 18px;
+            color: #fff;
+            opacity: 0.95;
+            margin-bottom: 32px;
         }
 
         .cta-button {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 18px 36px;
-            font-family: 'Stara', 'Open Sans', sans-serif;
-            font-size: 18px;
-            font-weight: 700;
-            color: #fff;
-            background: linear-gradient(135deg, #6B05FE 0%, #43198C 100%);
-            border: 2px solid #8e4aff;
-            border-radius: 12px;
+            padding: 4px 4px 4px 24px;
+            font-family: 'Stara', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+            background: #fff;
+            border: none;
+            border-radius: 100px;
             text-decoration: none;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow:
-                0 0 30px rgba(107, 5, 254, 0.4),
-                0 8px 20px rgba(107, 5, 254, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .cta-button:hover {
-            background: linear-gradient(135deg, #7a15ff 0%, #5425a3 100%);
-            border-color: #a66dff;
-            box-shadow:
-                0 0 50px rgba(107, 5, 254, 0.6),
-                0 12px 30px rgba(107, 5, 254, 0.4);
-            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .cta-button svg {
+        .cta-button span {
+            margin-right: 16px;
+        }
+
+        .cta-button .arrow-circle {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #000;
+            border-radius: 50%;
+            overflow: hidden;
+            transition: clip-path 0.55s cubic-bezier(0.12, 0.75, 0.4, 1), background-color 0.55s cubic-bezier(0.12, 0.75, 0.4, 1);
+            clip-path: circle(50% at 50% 50%);
+        }
+
+        .cta-button:hover .arrow-circle {
+            clip-path: circle(45% at 50% 50%);
+        }
+
+        .cta-button .arrow-circle svg {
+            position: absolute;
             width: 18px;
             height: 18px;
-            transition: transform 0.2s ease;
+            color: #fff;
+            fill: #fff;
+            transition: transform 0.55s cubic-bezier(0.12, 0.75, 0.4, 1);
         }
 
-        .cta-button:hover svg {
-            transform: translateX(4px);
+        .cta-button .arrow-circle svg.arrow-hover {
+            transform: translate(-100%, 100%);
+        }
+
+        .cta-button:hover .arrow-circle svg:first-child {
+            transform: translate(100%, -100%);
+        }
+
+        .cta-button:hover .arrow-circle svg.arrow-hover {
+            transform: translate(0, 0);
         }
 
         /* Footer */
         .footer {
-            margin-top: 60px;
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px 0;
+            background: #fff;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-section {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 24px;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .footer-tagline {
+            font-size: 14px;
+            font-weight: 500;
+            color: #888;
+            font-style: italic;
         }
 
         .social-icons {
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
 
         .social-icon {
@@ -488,18 +1010,18 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #f5f5f5;
+            border: 1px solid #e8e8e8;
             border-radius: 10px;
-            color: rgba(255, 255, 255, 0.6);
+            color: #555;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
         }
 
         .social-icon:hover {
-            background: #8e4aff;
-            border-color: #8e4aff;
-            color: #fff;
+            background: rgba(107, 5, 254, 0.1);
+            border-color: rgba(107, 5, 254, 0.3);
+            color: #6B05FE;
         }
 
         .social-icon svg {
@@ -507,316 +1029,822 @@
             height: 18px;
         }
 
-        .footer-right {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 8px;
-        }
-
         .footer-links {
             display: flex;
-            gap: 8px;
             align-items: center;
+            gap: 8px;
             flex-wrap: wrap;
-            justify-content: flex-end;
+            justify-content: center;
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.5);
+            color: #555;
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.2s ease;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: #8e4aff;
+            color: #6B05FE;
         }
 
-        .footer-links span {
-            color: rgba(255, 255, 255, 0.3);
+        .footer-links .separator {
+            color: #ccc;
+            font-size: 10px;
         }
 
         .copyright {
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.4);
+            color: #888;
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 24px 16px 40px;
-            }
-
-            .back-link {
-                margin-bottom: 32px;
-            }
-
-            .team-card {
-                padding: 28px 20px;
-            }
-
-            .team-card-inner {
-                flex-direction: column;
-                align-items: center;
+        /* Tablet Responsive */
+        @media (max-width: 900px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
                 text-align: center;
-                gap: 24px;
             }
 
-            .team-photo {
-                width: 120px;
-                height: 120px;
+            .product-image {
+                order: -1;
             }
 
-            .team-photo-initials {
-                font-size: 36px;
+            .product-image img {
+                max-width: 260px;
             }
 
-            .team-name {
-                font-size: 24px;
+            .modal-content {
+                grid-template-columns: 1fr;
+                max-height: 90vh;
+                overflow-y: auto;
             }
 
-            .team-role {
-                font-size: 14px;
-            }
-
-            .team-bio {
-                font-size: 14px;
-                text-align: left;
-            }
-
-            .experience-tags {
+            .modal-photo {
+                padding: 16px;
+                min-height: auto;
+                max-height: 300px;
+                background: #f8f9fa;
+                position: relative;
+                z-index: 1;
+                display: flex;
+                align-items: center;
                 justify-content: center;
             }
 
-            .experience-stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
+            .modal-photo img {
+                width: auto;
+                height: 100%;
+                max-height: 268px;
+                border-radius: 12px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            }
+
+            .modal-info {
+                padding: 56px 24px 32px;
+                max-height: none;
+                overflow-y: visible;
+            }
+
+            .modal-tags {
+                gap: 8px;
+            }
+
+            .modal-tag {
+                padding: 8px 12px;
+                font-size: 11px;
+            }
+        }
+
+        /* Mobile - everything scrolls together */
+        @media (max-width: 600px) {
+            .modal-content {
+                max-height: 92vh;
+            }
+
+            .modal-photo {
+                padding: 0;
+                max-height: none;
+                background: transparent;
+            }
+
+            .modal-photo img {
+                width: 100%;
+                height: auto;
+                max-height: none;
+                border-radius: 12px 12px 0 0;
+                box-shadow: none;
+            }
+
+            .modal-info {
+                padding: 52px 20px 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-link img {
+                height: 26px;
+            }
+
+            .hero {
+                padding: 32px 0 16px;
+            }
+
+            .team-section {
+                padding: 32px 0 60px;
+            }
+
+            .team-intro {
+                margin-bottom: 40px;
+                font-size: 16px;
+            }
+
+            .team-grid {
+                gap: 40px;
+            }
+
+            .member-photo {
+                width: 160px;
+                height: 160px;
+            }
+
+            .member-arrow {
+                width: 32px;
+                height: 32px;
+                bottom: 8px;
+                right: 8px;
+            }
+
+            .member-arrow svg {
+                width: 14px;
+                height: 14px;
+            }
+
+            .member-name {
+                font-size: 18px;
+                margin-top: 16px;
+            }
+
+            .member-role {
+                font-size: 13px;
+            }
+
+            .modal-name {
+                font-size: 28px;
+            }
+
+            .modal-role {
+                font-size: 13px;
+            }
+
+            .modal-bio p {
+                font-size: 16px;
+                line-height: 1.75;
+                color: #333;
+            }
+
+            .modal-bio {
+                font-size: 16px;
+            }
+
+            .product-section {
+                padding: 40px 0;
             }
 
             .cta-section {
-                padding: 32px 20px;
-            }
-
-            .footer {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .footer-right {
-                align-items: center;
-            }
-
-            .footer-links {
-                justify-content: center;
-            }
-
-            .social-icons {
-                flex-wrap: nowrap;
-                justify-content: center;
-                gap: 6px;
-            }
-
-            .social-icon {
-                width: 32px;
-                height: 32px;
-                border-radius: 8px;
-            }
-
-            .social-icon svg {
-                width: 14px;
-                height: 14px;
+                padding: 48px 20px;
             }
         }
 
         @media (max-width: 480px) {
-            .experience-stats {
-                grid-template-columns: 1fr 1fr;
+            .header {
+                padding: 12px 0;
             }
 
-            .exp-stat-number {
-                font-size: 28px;
+            .logo-link img {
+                height: 24px;
             }
 
-            .footer-links {
+            .header-inner {
                 flex-direction: column;
                 gap: 12px;
             }
 
-            .footer-links span {
-                display: none;
+            .team-grid {
+                gap: 32px;
+            }
+
+            .member-photo {
+                width: 140px;
+                height: 140px;
+            }
+
+            .modal-content {
+                width: 95%;
+                border-radius: 12px;
+            }
+
+            .modal-photo img {
+                border-radius: 12px 12px 0 0;
+            }
+
+            .modal-info {
+                padding: 52px 20px 24px;
+            }
+
+            .modal-name {
+                font-size: 24px;
+            }
+
+            .modal-bio p {
+                font-size: 15px;
+                line-height: 1.7;
+                color: #333;
+            }
+
+            .modal-close {
+                top: 12px;
+                right: 12px;
+                width: 36px;
+                height: 36px;
+                font-size: 20px;
+            }
+
+            .modal-tags {
+                gap: 6px;
+            }
+
+            .modal-tag {
+                padding: 6px 10px;
+                font-size: 10px;
+            }
+
+            .modal-linkedin {
+                padding: 10px 18px;
+                font-size: 13px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            html {
+                scroll-behavior: auto;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Back Button with Logo -->
-        <a href="/" class="back-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-            <img src="/images/logo.png" alt="CHEKKD">
-        </a>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="/" class="logo-link">
+                    <img src="/wp-content/uploads/2026/01/CHEKKD_Logo_official.png" alt="CHEKKD">
+                </a>
+                <a href="/" class="back-home">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Back
+                </a>
+            </div>
+        </div>
+    </header>
 
-        <!-- Page Header -->
-        <div class="page-header">
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
             <h1>Meet the Team</h1>
-            <p>The founders behind CHEKKD bring decades of combined experience in digital identity, enterprise infrastructure, and high-growth operations.</p>
         </div>
+    </section>
 
-        <!-- Combined Experience Stats -->
-        <div class="experience-section">
-            <h2>Combined Leadership Experience</h2>
-            <div class="experience-stats">
-                <div class="exp-stat">
-                    <div class="exp-stat-number">50+</div>
-                    <div class="exp-stat-label">Years Combined Experience</div>
-                </div>
-                <div class="exp-stat">
-                    <div class="exp-stat-number">3</div>
-                    <div class="exp-stat-label">Previous Startups Founded</div>
-                </div>
-                <div class="exp-stat">
-                    <div class="exp-stat-number">6</div>
-                    <div class="exp-stat-label">Fortune 500 Companies</div>
-                </div>
-                <div class="exp-stat">
-                    <div class="exp-stat-number">1K+</div>
-                    <div class="exp-stat-label">Eng Hours Saved Monthly</div>
-                </div>
-            </div>
-        </div>
+    <!-- Team Section - Circular Grid -->
+    <section class="team-section">
+        <div class="container">
+            <p class="team-intro">The founders building the future of trust verification.</p>
 
-        <!-- Team Grid -->
-        <div class="team-grid">
-            <!-- Shaun Kimball -->
-            <div class="team-card">
-                <div class="team-card-inner">
-                    <div class="team-photo">
-                        <span class="team-photo-initials">SK</span>
-                        <!-- Replace with actual photo: <img src="/images/team/shaun-kimball.jpg" alt="Shaun Kimball"> -->
+            <div class="team-grid">
+                <!-- Shaun Kimball -->
+                <div class="team-member" data-member="shaun" role="button" tabindex="0" aria-label="View Shaun Kimball's bio">
+                    <div class="member-photo">
+                        <img src="/wp-content/uploads/2026/01/shaun.jpeg" alt="Shaun Kimball">
+                        <button class="member-arrow" aria-label="View bio" tabindex="-1">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </button>
                     </div>
-                    <div class="team-info">
-                        <h2 class="team-name">Shaun Kimball</h2>
-                        <div class="team-role">Founder & CEO</div>
-                        <div class="team-bio">
-                            <p>Shaun Kimball is a repeat founder operating at the intersection of <strong>digital identity, blockchain, and fintech</strong>. He previously founded Nomyx, a tokenization-as-a-service platform enabling real-world asset verification and smart identities, and before that launched SOS Supply, a national PPE supplier during the height of COVID-19.</p>
-                            <p>Across each venture, he encountered the same systemic friction: people want to transact, but they lack portable, provable trust. That insight became the foundation for CHEKKD.</p>
-                            <p>As Founder & CEO, Shaun leads the company's mission and vision. His leadership blends product intuition, brand clarity, and mission-driven execution, grounded in the belief that <strong>trust should not be assumed or gamed -- it should be earned, proven, and universally accessible</strong>.</p>
-                        </div>
-                        <div class="experience-tags">
-                            <span class="experience-tag">Digital Identity</span>
-                            <span class="experience-tag">Blockchain</span>
-                            <span class="experience-tag">Fintech</span>
-                            <span class="experience-tag">Serial Founder</span>
-                        </div>
-                    </div>
+                    <h3 class="member-name">Shaun Kimball</h3>
+                    <p class="member-role">Founder & CEO</p>
                 </div>
-            </div>
 
-            <!-- Jon Sanderson -->
-            <div class="team-card">
-                <div class="team-card-inner">
-                    <div class="team-photo">
-                        <span class="team-photo-initials">JS</span>
-                        <!-- Replace with actual photo: <img src="/images/team/jon-sanderson.jpg" alt="Jon Sanderson"> -->
-                    </div>
-                    <div class="team-info">
-                        <h2 class="team-name">Jon Sanderson</h2>
-                        <div class="team-role">Co-Founder & COO</div>
-                        <div class="team-bio">
-                            <p>Jon Sanderson is a growth and operations executive with more than <strong>15 years of experience</strong> scaling performance-driven marketing organizations across complex B2B and infrastructure-focused technology companies.</p>
-                            <p>He has held executive leadership roles spanning decentralized cloud storage, big-data CX platforms, marketing automation, and enterprise SaaS -- including overseeing multi-division marketing and sales organizations with hundreds of employees and global footprints. His work has driven significant ARR growth, reduced churn, expanded upsell revenue, and built high-performing demand engines from the ground up.</p>
-                            <p>At CHEKKD, Jon leads operations and go-to-market strategy, translating technical innovation into scalable growth. With deep fluency in <strong>data-driven performance, automation systems, and buyer psychology</strong>, he ensures the company's growth engine is disciplined, measurable, and aligned with long-term enterprise value creation.</p>
+                <!-- Matthew Schwen -->
+                <div class="team-member" data-member="matthew" role="button" tabindex="0" aria-label="View Matthew Schwen's bio">
+                    <div class="member-photo">
+                        <div style="overflow: hidden; border-radius: 50%; border: 3px solid #1a1a2e; width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+                            <img src="/wp-content/uploads/2026/01/Matthew_Profile.jpeg" alt="Matthew Schwen" style="transform: scale(1.2) translateY(6%); border: none; border-radius: 0; width: 100%; height: 100%; object-fit: cover;">
                         </div>
-                        <div class="experience-tags">
-                            <span class="experience-tag">Growth Strategy</span>
-                            <span class="experience-tag">Operations</span>
-                            <span class="experience-tag">Enterprise SaaS</span>
-                            <span class="experience-tag">Marketing Automation</span>
-                        </div>
+                        <button class="member-arrow" aria-label="View bio" tabindex="-1">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </button>
                     </div>
+                    <h3 class="member-name">Matthew Schwen</h3>
+                    <p class="member-role">Co-Founder & CTO</p>
                 </div>
-            </div>
 
-            <!-- Matthew Schwen -->
-            <div class="team-card">
-                <div class="team-card-inner">
-                    <div class="team-photo">
-                        <span class="team-photo-initials">MS</span>
-                        <!-- Replace with actual photo: <img src="/images/team/matthew-schwen.jpg" alt="Matthew Schwen"> -->
+                <!-- Jon Sanderson -->
+                <div class="team-member" data-member="jon" role="button" tabindex="0" aria-label="View Jon Sanderson's bio">
+                    <div class="member-photo">
+                        <img src="/wp-content/uploads/2026/01/jon.jpeg" alt="Jon Sanderson">
+                        <button class="member-arrow" aria-label="View bio" tabindex="-1">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </button>
                     </div>
-                    <div class="team-info">
-                        <h2 class="team-name">Matthew Schwen</h2>
-                        <div class="team-role">Co-Founder & CTO</div>
-                        <div class="team-bio">
-                            <p>Matthew Schwen is a veteran infrastructure and automation leader with <strong>two decades of experience</strong> building and operating large-scale networks for global enterprises, including Oracle, Humana, Adobe, Symantec, and The Trade Desk.</p>
-                            <p>At Humana, he led network automation engineering and implemented AI-driven tooling that centralized workflows and reclaimed over <strong>1,000 engineering hours per month</strong>. He previously co-founded and served as CTO of PortalCX, where he helped lead product strategy, recruiting, fundraising, and software development.</p>
-                            <p>As CTO of CHEKKD, Matthew architects the scalable, resilient systems that power the Trust Score and verification platform. Widely recognized for his work at the intersection of <strong>AI and infrastructure</strong>, he brings production-grade automation expertise and enterprise-level security rigor to ensure the company's technology foundation is built for durability, scale, and mission-critical trust.</p>
-                        </div>
-                        <div class="experience-tags">
-                            <span class="experience-tag">Infrastructure</span>
-                            <span class="experience-tag">AI/ML</span>
-                            <span class="experience-tag">Enterprise Security</span>
-                            <span class="experience-tag">Network Automation</span>
-                        </div>
-                    </div>
+                    <h3 class="member-name">Jon Sanderson</h3>
+                    <p class="member-role">Chief Strategy Officer (CSO)</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- CTA Section -->
-        <div class="cta-section">
-            <h3>Build Trust With Us</h3>
-            <p>Join thousands already on the waitlist for the future of identity verification.</p>
-            <a href="/" class="cta-button" onclick="event.preventDefault(); window.location.href='/'; setTimeout(() => { const modal = document.getElementById('chekkd-signup-modal'); if(modal) modal.classList.add('active'); }, 100);">
-                <span>Join the Waitlist</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <div class="social-icons">
-                <a href="https://www.facebook.com/share/18HvpV8Q85/" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                </a>
-                <a href="https://twitter.com/chekkdapp" target="_blank" rel="noopener" class="social-icon" aria-label="Twitter">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
-                <a href="https://instagram.com/chekkdapp" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
-                <a href="https://www.tiktok.com/@chekkdapp" target="_blank" rel="noopener" class="social-icon" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg>
-                </a>
-                <a href="https://youtube.com/@chekkd" target="_blank" rel="noopener" class="social-icon" aria-label="YouTube">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/company/chekkd/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
+    <!-- Team Modal -->
+    <div class="team-modal" id="teamModal" role="dialog" aria-modal="true" aria-labelledby="modalName">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-photo">
+                <div class="modal-photo-bg" id="modalPhotoBg"></div>
+                <img src="" alt="" id="modalPhoto">
             </div>
-
-            <div class="footer-right">
-                <div class="footer-links">
-                    <a href="/about.html">About</a>
-                    <span>|</span>
-                    <a href="/team.html">Team</a>
-                    <span>|</span>
-                    <a href="/privacy-policy.html">Privacy Policy</a>
-                    <span>|</span>
-                    <a href="/terms-of-service.html">Terms of Service</a>
-                    <span>|</span>
-                    <a href="https://chekkdlounge.com/" target="_blank" rel="noopener">CHEKKD Lounge</a>
+            <div class="modal-info">
+                <div class="modal-header">
+                    <div class="modal-header-left">
+                        <h2 class="modal-name" id="modalName"></h2>
+                        <p class="modal-role" id="modalRole"></p>
+                    </div>
+                    <a href="" class="modal-linkedin" id="modalLinkedin" target="_blank" rel="noopener noreferrer" aria-label="Connect on LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
                 </div>
-                <div class="copyright">© 2026 CHEKKD. All rights reserved.</div>
+                <p class="modal-bio" id="modalBio"></p>
+                <div class="modal-tags" id="modalTags"></div>
             </div>
         </div>
     </div>
+
+    <!-- Product Section -->
+    <section class="product-section">
+        <div class="container">
+            <div class="product-grid">
+                <div class="product-content">
+                    <h2>Portable Trust for the Real World</h2>
+                    <p>CHEKKD gives people a portable Trust Score that proves they're real, verified, and trustworthy - so every peer-to-peer transaction feels safe.</p>
+                </div>
+                <div class="product-image">
+                    <img src="/wp-content/uploads/2026/01/app_small.jpeg" alt="CHEKKD App">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Signup for our waitlist!</h2>
+                <p>Enter to win $1000, given randomly to the first 1000 signups.</p>
+                <button class="cta-button" data-open-modal="signup">
+                    <span>Join the Waitlist</span>
+                    <div class="arrow-circle">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="arrow-hover">
+                            <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-section">
+                <div class="footer-tagline">Because "Trust Me" is for dare-devils...</div>
+                <div class="social-icons">
+                    <a href="https://instagram.com/chekkdapp" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/chekkd/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/share/18HvpV8Q85/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/chekkdapp" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="X">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                </div>
+                <div class="footer-links">
+                    <a href="/about.html">About</a>
+                    <span class="separator">•</span>
+                    <a href="/team.html">Team</a>
+                    <span class="separator">•</span>
+                    <a href="/privacy-policy.html">Privacy</a>
+                    <span class="separator">•</span>
+                    <a href="/terms-of-service.html">Terms</a>
+                    <span class="separator">•</span>
+                    <a href="https://chekkdlounge.com/" target="_blank" rel="noopener">Lounge</a>
+                </div>
+                <div class="copyright">&copy; 2026 CHEKKD. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Signup Modal -->
+    <div class="chekkd-modal-overlay" id="chekkd-signup-modal" role="dialog" aria-labelledby="signup-modal-title" aria-modal="true">
+        <div class="chekkd-modal-container">
+            <div class="chekkd-modal-bg-overlay"></div>
+            <button class="chekkd-modal-close" id="signup-modal-close-btn" aria-label="Close modal"></button>
+            <div class="chekkd-modal-content">
+                <div id="signup-modal-form-view">
+                    <img src="/wp-content/uploads/2026/01/CHEKKD_Logo_official.png" alt="CHEKKD" class="chekkd-form-logo">
+                    <h2 class="chekkd-modal-heading" id="signup-modal-title">Join the Waitlist</h2>
+                    <form class="chekkd-modal-form" id="chekkd-signup-modal-form" novalidate>
+                        <div class="chekkd-form-row">
+                            <div class="chekkd-form-field" data-field="firstName">
+                                <label for="signup-modal-first-name">First name</label>
+                                <input type="text" id="signup-modal-first-name" name="first_name" placeholder="Tyler" required aria-required="true">
+                                <span class="error-message">Please enter your first name</span>
+                            </div>
+                            <div class="chekkd-form-field" data-field="lastName">
+                                <label for="signup-modal-last-name">Last name</label>
+                                <input type="text" id="signup-modal-last-name" name="last_name" placeholder="Durden" required aria-required="true">
+                                <span class="error-message">Please enter your last name</span>
+                            </div>
+                        </div>
+                        <div class="chekkd-form-field" data-field="email">
+                            <label for="signup-modal-email">Email address</label>
+                            <input type="email" id="signup-modal-email" name="email" placeholder="projectmayhem@fc.com" required aria-required="true">
+                            <span class="error-message">Please enter a valid email address</span>
+                        </div>
+                        <div class="chekkd-form-field" data-field="phone">
+                            <label for="signup-modal-phone">Phone number</label>
+                            <input type="tel" id="signup-modal-phone" name="phone" placeholder="(555) 000-0000" aria-required="false">
+                            <span class="error-message">Please enter a valid phone number</span>
+                        </div>
+                        <button type="submit" class="chekkd-modal-submit" id="signup-modal-submit-btn">
+                            <span class="button-text">Sign up</span>
+                            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                        <p class="chekkd-modal-disclaimer">By signing up, you agree to receive communications about Chekkd events.</p>
+                    </form>
+                </div>
+                <div class="chekkd-modal-success" id="signup-modal-success-view">
+                    <div class="success-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>You're on the list!</h3>
+                    <p>We'll notify you when CHEKKD launches. Get ready to verify people and act with confidence.</p>
+                    <a href="https://chekkdlounge.com/" target="_blank" rel="noopener" class="success-cta">
+                        Visit the Lounge
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 6v2H5v11h11v-5h2v6a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1h6zm11-3v8h-2V6.413l-7.793 7.794-1.414-1.414L17.585 5H13V3h8z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal JavaScript -->
+    <script>
+    (function() {
+        'use strict';
+
+        var signupModal = document.getElementById('chekkd-signup-modal');
+        var signupModalForm = document.getElementById('chekkd-signup-modal-form');
+        var signupModalCloseBtn = document.getElementById('signup-modal-close-btn');
+        var signupModalSubmitBtn = document.getElementById('signup-modal-submit-btn');
+        var signupFormView = document.getElementById('signup-modal-form-view');
+        var signupSuccessView = document.getElementById('signup-modal-success-view');
+
+        var signupFields = {
+            firstName: document.getElementById('signup-modal-first-name'),
+            lastName: document.getElementById('signup-modal-last-name'),
+            email: document.getElementById('signup-modal-email'),
+            phone: document.getElementById('signup-modal-phone')
+        };
+
+        function formatPhoneNumber(value) {
+            var cleaned = ('' + value).replace(/\D/g, '');
+            var match = cleaned.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/);
+            if (!match) return value;
+            if (match[1] && match[2] && match[3]) {
+                return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+            } else if (match[1] && match[2]) {
+                return '(' + match[1] + ') ' + match[2];
+            } else if (match[1]) {
+                return '(' + match[1];
+            }
+            return value;
+        }
+
+        signupFields.phone.addEventListener('input', function(e) {
+            var cursorPos = this.selectionStart;
+            var oldLength = this.value.length;
+            this.value = formatPhoneNumber(this.value);
+            var newLength = this.value.length;
+            var diff = newLength - oldLength;
+            this.setSelectionRange(cursorPos + diff, cursorPos + diff);
+        });
+
+        function openSignupModal() {
+            signupModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            signupFields.firstName.focus();
+        }
+
+        function closeSignupModal() {
+            signupModal.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(function() {
+                signupModalForm.reset();
+                document.querySelectorAll('#chekkd-signup-modal .chekkd-form-field').forEach(function(field) {
+                    field.classList.remove('error', 'success');
+                });
+                signupFormView.style.display = 'block';
+                signupSuccessView.classList.remove('active');
+                signupModalSubmitBtn.classList.remove('loading');
+            }, 400);
+        }
+
+        function validateSignupField(fieldName, value) {
+            var fieldElement = document.querySelector('#chekkd-signup-modal [data-field="' + fieldName + '"]');
+            var isValid = false;
+            switch(fieldName) {
+                case 'firstName':
+                case 'lastName':
+                    isValid = value.trim().length >= 2;
+                    break;
+                case 'email':
+                    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    isValid = emailRegex.test(value);
+                    break;
+                case 'phone':
+                    if (value.trim().length === 0) {
+                        isValid = true;
+                    } else {
+                        var phoneRegex = /^[0-9\-\+\(\)\s]{10,}$/;
+                        isValid = phoneRegex.test(value);
+                    }
+                    break;
+            }
+            if (isValid) {
+                fieldElement.classList.remove('error');
+                fieldElement.classList.add('success');
+            } else if (value.length > 0) {
+                fieldElement.classList.add('error');
+                fieldElement.classList.remove('success');
+            } else {
+                fieldElement.classList.remove('error', 'success');
+            }
+            return isValid;
+        }
+
+        Object.keys(signupFields).forEach(function(fieldName) {
+            signupFields[fieldName].addEventListener('input', function() {
+                var fieldElement = document.querySelector('#chekkd-signup-modal [data-field="' + fieldName + '"]');
+                fieldElement.classList.remove('error', 'success');
+            });
+        });
+
+        signupModalForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var isValid = true;
+            var formData = {};
+            Object.keys(signupFields).forEach(function(fieldName) {
+                var value = signupFields[fieldName].value;
+                formData[fieldName] = value;
+                if (!validateSignupField(fieldName, value)) {
+                    isValid = false;
+                }
+            });
+            if (!isValid) {
+                var firstError = document.querySelector('#chekkd-signup-modal .chekkd-form-field.error');
+                if (firstError) {
+                    firstError.querySelector('input').focus();
+                }
+                return;
+            }
+            signupModalSubmitBtn.classList.add('loading');
+            signupModalSubmitBtn.disabled = true;
+
+            var CLICKUP_API_TOKEN = 'pk_168268922_YMF9HVKTNMLTPEL50T2V0IW3S6IALQ8T';
+            var CLICKUP_LIST_ID = '901706927077';
+            var taskName = formData.firstName + ' ' + formData.lastName + ' - Waitlist Signup';
+            var taskDescription = '**Email:** ' + formData.email + '\n**Phone:** ' + (formData.phone || 'Not provided') + '\n\n**Source:** CHEKKD Website Team Page\n**Signup Date:** ' + new Date().toISOString();
+
+            fetch('https://api.clickup.com/api/v2/list/' + CLICKUP_LIST_ID + '/task', {
+                method: 'POST',
+                headers: {
+                    'Authorization': CLICKUP_API_TOKEN,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: taskName,
+                    description: taskDescription,
+                    tags: ['chekkd_waitlist'],
+                    status: 'new'
+                })
+            })
+            .then(function(response) {
+                if (!response.ok) throw new Error('ClickUp API error');
+                return response.json();
+            })
+            .then(function(data) {
+                signupFormView.style.display = 'none';
+                signupSuccessView.classList.add('active');
+                signupModalSubmitBtn.classList.remove('loading');
+                signupModalSubmitBtn.disabled = false;
+                console.log('Successfully joined waitlist - Task created in ClickUp:', data.id);
+            })
+            .catch(function(error) {
+                console.error('Error submitting to ClickUp:', error);
+                signupModalSubmitBtn.classList.remove('loading');
+                signupModalSubmitBtn.disabled = false;
+                alert('Sorry, there was an error submitting your information. Please try again or contact us directly.');
+            });
+        });
+
+        signupModalCloseBtn.addEventListener('click', closeSignupModal);
+
+        signupModal.addEventListener('click', function(e) {
+            if (e.target === signupModal) {
+                closeSignupModal();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && signupModal.classList.contains('active')) {
+                closeSignupModal();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var signupButtons = document.querySelectorAll('[data-open-modal="signup"]');
+            signupButtons.forEach(function(button) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openSignupModal();
+                });
+            });
+        });
+    })();
+    </script>
+
+    <!-- Team Modal JavaScript -->
+    <script>
+        // Team member data
+        const teamData = {
+            shaun: {
+                name: 'Shaun Kimball',
+                role: 'Founder & CEO',
+                photo: '/wp-content/uploads/2026/01/shaun.jpeg',
+                bio1: 'Shaun Kimball is a repeat founder operating at the intersection of digital identity, blockchain, and fintech. He previously founded Nomyx, a tokenization-as-a-service platform enabling real-world asset verification and smart identities and before that launched SOS Supply, a national PPE supplier during the height of COVID-19. Across each venture, he encountered the same systemic friction: people want to transact, but they lack portable, provable trust. That insight became the foundation for CHEKKD.',
+                bio2: 'As Founder & CEO, Shaun leads the company\'s vision and strategic direction. His leadership blends product intuition, brand clarity, and mission-driven execution, grounded in the belief that trust should not be assumed or gamed — it should be earned, proven, and universally accessible.',
+                tags: ['Serial Entrepreneur', 'Digital Identity', 'Product Vision', 'Tokenization', 'Blockchain', 'Fintech'],
+                linkedin: 'https://www.linkedin.com/in/shaun-kimball/'
+            },
+            matthew: {
+                name: 'Matthew Schwen',
+                role: 'Co-Founder & CTO',
+                photo: '/wp-content/uploads/2026/01/Matthew_Profile.jpeg',
+                bio1: 'Matthew Schwen is a technical leader specializing in AI and automation-driven infrastructure with nearly 20 years of experience as a software engineer, network architect, and entrepreneur. He has built and scaled critical systems at Oracle, Humana, Adobe, The Trade Desk, and Symantec — designing high-availability architectures handling billions of daily queries while pioneering automation frameworks that reclaimed thousands of engineering hours monthly.',
+                bio2: 'At CHEKKD, Matt leads all technical strategy as Co-Founder & CTO, turning vision into reality across the entire stack. His expertise spans infrastructure, software development, and cloud architecture, with a focus on integrating AI to build smarter, faster systems. He\'s driven by the belief that great technology should eliminate friction, not create it.',
+                tags: ['AI & Automation', 'Systems Architecture', 'Enterprise Infrastructure', 'Full-Stack Development', 'Cloud Architecture', 'Network Engineering'],
+                linkedin: 'https://www.linkedin.com/in/mattschwen'
+            },
+            jon: {
+                name: 'Jon Sanderson',
+                role: 'Chief Strategy Officer (CSO)',
+                photo: '/wp-content/uploads/2026/01/jon.jpeg',
+                bio1: 'Jon Sanderson is a growth and operations executive with more than 15 years of experience scaling performance-driven marketing organizations across complex B2B and infrastructure-focused technology companies. He has held executive leadership roles spanning decentralized cloud storage, big-data CX platforms, marketing automation, and enterprise SaaS — including overseeing multi-division marketing and sales organizations with hundreds of employees and global footprints. His work has driven significant ARR growth, reduced churn, expanded upsell revenue, and built high-performing demand engines from the ground up.',
+                bio2: 'At CHEKKD, Jon leads operations and go-to-market strategy, translating technical innovation into scalable growth. With deep fluency in data driven performance, automation systems, and buyer psychology, he ensures the company\'s growth engine is disciplined, measurable, and aligned with long-term enterprise value creation.',
+                tags: ['Revenue Growth', 'Go-to-Market Strategy', 'B2B Marketing', 'Demand Generation', 'SaaS Operations', 'Performance Marketing'],
+                linkedin: 'https://www.linkedin.com/in/jon-sanderson-17b88a10/'
+            }
+        };
+
+        const modal = document.getElementById('teamModal');
+        const modalPhoto = document.getElementById('modalPhoto');
+        const modalName = document.getElementById('modalName');
+        const modalRole = document.getElementById('modalRole');
+        const modalBio = document.getElementById('modalBio');
+        const modalTags = document.getElementById('modalTags');
+        const modalLinkedin = document.getElementById('modalLinkedin');
+        const modalContent = document.querySelector('.modal-content');
+
+        // Open modal
+        function openModal(memberId) {
+            const data = teamData[memberId];
+            if (!data) return;
+
+            // Set blurred background
+            document.getElementById('modalPhotoBg').style.backgroundImage = `url(${data.photo})`;
+
+            modalPhoto.src = data.photo;
+            modalPhoto.alt = data.name;
+            modalName.textContent = data.name;
+            modalRole.textContent = data.role;
+            modalLinkedin.href = data.linkedin;
+
+            // Build bio with two paragraphs
+            modalBio.innerHTML = `<p>${data.bio1}</p><p>${data.bio2}</p>`;
+
+            // Build tags
+            modalTags.innerHTML = data.tags.map(tag =>
+                `<span class="modal-tag">${tag}</span>`
+            ).join('');
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Reset scroll position
+            modalContent.scrollTop = 0;
+
+            // Focus trap - focus the close button
+            document.querySelector('.modal-close').focus();
+        }
+
+        // Close modal
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners for team members
+        document.querySelectorAll('.team-member').forEach(member => {
+            member.addEventListener('click', () => {
+                openModal(member.dataset.member);
+            });
+
+            // Keyboard support
+            member.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openModal(member.dataset.member);
+                }
+            });
+        });
+
+        // Close button
+        document.querySelector('.modal-close').addEventListener('click', closeModal);
+
+        // Overlay click
+        document.querySelector('.modal-overlay').addEventListener('click', closeModal);
+
+        // Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Focus trap within modal
+        modal.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                const focusableElements = modal.querySelectorAll(
+                    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                );
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (e.shiftKey && document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement.focus();
+                } else if (!e.shiftKey && document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
+            }
+        });
+    </script>
 </body>
 </html>
