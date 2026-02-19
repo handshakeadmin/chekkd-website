@@ -233,8 +233,8 @@
 <meta name='robots' content='max-image-preview:large' />
 <link rel="alternate" type="application/rss+xml" title="CHEKKD &raquo; Feed" href="feed/index.html" />
 <link rel="alternate" type="application/rss+xml" title="CHEKKD &raquo; Comments Feed" href="comments/feed/index.html" />
-<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="wp-json/oembed/1.0/embed@url=https%253A%252F%252Fchekkd.com%252F" />
-<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="wp-json/oembed/1.0/embed@url=https%253A%252F%252Fchekkd.com%252F&amp;format=xml" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="wp-json/oembed/1.0/embed@url=https%253A%252F%252Fwww.chekkd.com%252F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="wp-json/oembed/1.0/embed@url=https%253A%252F%252Fwww.chekkd.com%252F&amp;format=xml" />
 <link rel="preload" href="wp-content/themes/salient/css/fonts/icomoon.woff@v=1.7" as="font" type="font/woff" crossorigin="anonymous"><style id='wp-img-auto-sizes-contain-inline-css' type='text/css'>
 img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceURL=wp-img-auto-sizes-contain-inline-css */
@@ -293,7 +293,7 @@ body[data-ajax-transitions="true"] #ajax-loading-screen[data-effect="standard"],
 /*# sourceURL=dynamic-css-inline-css */
 </style>
 <style id="chekkd-logo-override">
-/* Force logo to be bigger */
+/* Force logo to be bigger and closer to top */
 #header-outer #logo img,
 #header-outer[data-format="default"] #logo img,
 body #header-outer #logo img,
@@ -312,26 +312,78 @@ body.material #header-outer #logo img {
 #header-outer,
 #header-outer[data-format="default"] {
   height: auto !important;
-  min-height: 160px !important;
-  padding-top: 10px !important;
+  min-height: 140px !important;
+  padding-top: 0 !important;
 }
 #header-outer .container,
 #header-outer header#top {
-  padding-top: 5px !important;
+  padding-top: 0 !important;
   margin-top: 0 !important;
 }
 #header-outer #logo {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
+header#top .row {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+/* Mobile logo - tablet */
 @media only screen and (max-width: 999px) {
   #header-outer #logo img,
-  body #header-outer #logo img {
-    max-height: 70px !important;
-    height: 70px !important;
+  body #header-outer #logo img,
+  html body #header-outer #logo img,
+  #header-outer[data-mobile-fixed="1"] #logo img,
+  #header-outer[data-mobile-fixed="false"] #logo img,
+  body.material #header-outer #logo img {
+    max-height: 150px !important;
+    height: 150px !important;
   }
-  #header-outer {
-    min-height: 90px !important;
+  #header-outer,
+  body #header-outer {
+    min-height: 160px !important;
+  }
+}
+/* Mobile logo - phone */
+@media only screen and (max-width: 480px) {
+  #header-outer #logo img,
+  body #header-outer #logo img,
+  html body #header-outer #logo img,
+  #header-outer[data-mobile-fixed="1"] #logo img,
+  #header-outer[data-mobile-fixed="false"] #logo img,
+  body.material #header-outer #logo img {
+    max-height: 140px !important;
+    height: 140px !important;
+  }
+  #header-outer,
+  body #header-outer {
+    min-height: 150px !important;
+  }
+}
+/* Hide hamburger menu on mobile */
+@media only screen and (max-width: 999px) {
+  .slide-out-widget-area-toggle.mobile-icon,
+  #header-outer .slide-out-widget-area-toggle {
+    display: none !important;
+  }
+}
+/* Section 4 image - show full phone mockup on mobile */
+@media only screen and (max-width: 999px) {
+  /* Increase container height to show full image */
+  .vc_col-sm-6[data-using-bg="true"]:has(.column-image-bg[data-nectar-img-src*="Image_section_04"]) {
+    min-height: 420px !important;
+  }
+  .vc_col-sm-6[data-using-bg="true"]:has(.column-image-bg[data-nectar-img-src*="Image_section_04"]) .divider {
+    height: 420px !important;
+  }
+  /* Use contain to show full phone, positioned at top */
+  .column-image-bg[data-nectar-img-src*="Image_section_04"],
+  div.column-image-bg[data-nectar-img-src*="Image_section_04"],
+  .column-image-bg-wrap .column-image-bg[data-nectar-img-src*="Image_section_04"],
+  .inner-wrap .column-image-bg[data-nectar-img-src*="Image_section_04"] {
+    background-size: contain !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
   }
 }
 header#top .col.span_3,
@@ -523,8 +575,8 @@ header#top .col.span_3,
 /* Modal Heading */
 .chekkd-modal-heading {
   font-family: 'Open Sans', sans-serif;
-  font-size: clamp(32px, 4.5vw, 48px);
-  font-weight: 800;
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 700;
   line-height: 1.1;
   margin: 0 0 32px 0;
   text-align: center;
@@ -698,11 +750,11 @@ header#top .col.span_3,
 /* Submit Button */
 .chekkd-modal-submit {
   width: 100%;
-  padding: 24px 28px;
+  padding: 14px 24px;
   margin-top: 12px;
   font-family: 'Open Sans', sans-serif;
-  font-size: 20px !important;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
   letter-spacing: -0.01em;
   color: #fff;
   background: linear-gradient(135deg, #8e4aff 0%, #7a3ee6 100%);
@@ -937,123 +989,110 @@ header#top .col.span_3,
   }
 
   .chekkd-modal-submit {
-    font-size: 20px !important;
-    font-weight: 700;
-    padding: 22px 28px;
-    min-height: 66px;
-  }
-
-  .chekkd-modal-submit .arrow-icon {
-    width: 19px;
-    height: 19px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 14px 24px;
   }
 }
 
 /* Mobile Styles */
 @media only screen and (max-width: 690px) {
   .chekkd-modal-overlay {
-    padding: 12px;
+    padding: 8px;
     align-items: flex-start;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
 
   .chekkd-modal-container {
-    border-radius: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    border-radius: 16px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    max-height: none;
   }
 
   .chekkd-modal-content {
-    padding: 56px 28px 32px;
+    padding: 40px 20px 24px;
   }
 
   .chekkd-form-logo {
-    max-width: 160px;
-    margin-bottom: 20px;
+    max-width: 140px;
+    margin-bottom: 12px;
   }
 
   .chekkd-modal-heading {
-    font-size: clamp(28px, 6vw, 32px);
-    margin-bottom: 24px;
+    font-size: 24px;
+    margin-bottom: 16px;
   }
 
   .chekkd-modal-subheading {
-    font-size: 15px;
-    margin-bottom: 32px;
-    line-height: 1.5;
+    font-size: 14px;
+    margin-bottom: 20px;
+    line-height: 1.4;
   }
 
   .chekkd-modal-form {
-    gap: 18px;
+    gap: 12px;
   }
 
   .chekkd-form-row {
-    gap: 18px;
+    gap: 12px;
   }
 
   .chekkd-form-field {
-    gap: 10px;
+    gap: 4px;
   }
 
   .chekkd-form-field label {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: -0.01em;
   }
 
   .chekkd-form-field input {
-    padding: 18px 18px;
-    font-size: 18px !important;
+    padding: 12px 14px;
+    font-size: 16px !important;
     font-weight: 400 !important;
-    border-radius: 10px;
-    min-height: 56px;
+    border-radius: 8px;
+    min-height: auto;
   }
 
   .chekkd-form-field input::placeholder {
-    font-size: 18px !important;
+    font-size: 16px !important;
   }
 
   .chekkd-modal-submit {
-    font-size: 21px !important;
-    font-weight: 700;
-    padding: 24px 24px;
-    gap: 10px;
-    margin-top: 16px;
-    min-height: 68px;
-    border-radius: 12px;
-  }
-
-  .chekkd-modal-submit .arrow-icon {
-    width: 20px;
-    height: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 18px;
+    margin-top: 8px;
   }
 
   .chekkd-modal-close {
-    width: 40px;
-    height: 40px;
-    top: 12px;
-    right: 12px;
+    width: 36px;
+    height: 36px;
+    top: 10px;
+    right: 10px;
   }
 
   .chekkd-modal-close:before,
   .chekkd-modal-close:after {
-    width: 16px;
+    width: 14px;
   }
 
   .chekkd-modal-success .success-logo {
-    font-size: 44px;
-    margin-bottom: 28px;
+    font-size: 40px;
+    margin-bottom: 20px;
   }
 
   .chekkd-modal-success h3 {
-    font-size: 26px;
+    font-size: 22px;
   }
 
   .chekkd-modal-disclaimer {
-    font-size: 13px;
-    margin-top: 16px;
-    line-height: 1.6;
+    font-size: 12px;
+    margin-top: 12px;
+    line-height: 1.5;
     opacity: 0.8;
   }
 }
@@ -1446,7 +1485,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="row">
 			<div class="col span_3" style="max-width: 400px;">
 								<a id="logo" href="index.html" style="max-width: 350px; display: block;" data-supplied-ml-starting-dark="true" data-supplied-ml-starting="true" data-supplied-ml="false" >
-					<img class="stnd skip-lazy default-logo" style="height: 140px !important; width: auto !important; max-height: none !important;" width="2560" height="616" alt="CHEKKD" src="wp-content/uploads/2026/01/logo_white_txt.jpeg" srcset="wp-content/uploads/2026/01/logo_white_txt.jpeg 1x, wp-content/uploads/2026/01/logo_white_txt.jpeg 2x" /><img class="starting-logo mobile-only-logo skip-lazy" style="height: 70px !important; width: auto !important; max-height: none !important;" width="2560" height="616"  alt="CHEKKD" src="wp-content/uploads/2026/01/logo_white_txt.jpeg" /><img class="starting-logo dark-version mobile-only-logo skip-lazy" style="height: 70px !important; width: auto !important; max-height: none !important;" width="2560" height="616" alt="CHEKKD" src="wp-content/uploads/2026/01/logo_white_txt.jpeg" /><img class="starting-logo skip-lazy default-logo" style="height: 140px !important; width: auto !important; max-height: none !important;" width="2560" height="616" alt="CHEKKD" src="wp-content/uploads/2026/01/logo_white_txt.jpeg" srcset="wp-content/uploads/2026/01/logo_white_txt.jpeg 1x, wp-content/uploads/2026/01/logo_white_txt.jpeg 2x" /><img class="starting-logo dark-version skip-lazy default-logo" style="height: 140px !important; width: auto !important; max-height: none !important;" width="2560" height="616" alt="CHEKKD" src="wp-content/uploads/2026/01/logo_white_txt.jpeg" srcset="wp-content/uploads/2026/01/logo_white_txt.jpeg 1x, wp-content/uploads/2026/01/logo_white_txt.jpeg 2x" />				</a>
+					<img class="stnd skip-lazy default-logo" style="height: 140px !important; width: auto !important; max-height: none !important;" width="2560" height="616" alt="CHEKKD" src="wp-content/uploads/2026/01/logo_white_txt.jpeg" srcset="wp-content/uploads/2026/01/logo_white_txt.jpeg 1x, wp-content/uploads/2026/01/logo_white_txt.jpeg 2x" /><img class="starting-logo mobile-only-logo skip-lazy" style="height: 140px !important; width: auto !important; max-height: none !important;" width="2560" height="616"  alt="CHEKKD" src="wp-content/uploads/2026/01/logo_white_txt.jpeg" /><img class="starting-logo dark-version mobile-only-logo skip-lazy" style="height: 140px !important; width: auto !important; max-height: none !important;" width="2560" height="616" alt="CHEKKD" src="wp-content/uploads/2026/01/logo_white_txt.jpeg" /><img class="starting-logo skip-lazy default-logo" style="height: 140px !important; width: auto !important; max-height: none !important;" width="2560" height="616" alt="CHEKKD" src="wp-content/uploads/2026/01/logo_white_txt.jpeg" srcset="wp-content/uploads/2026/01/logo_white_txt.jpeg 1x, wp-content/uploads/2026/01/logo_white_txt.jpeg 2x" /><img class="starting-logo dark-version skip-lazy default-logo" style="height: 140px !important; width: auto !important; max-height: none !important;" width="2560" height="616" alt="CHEKKD" src="wp-content/uploads/2026/01/logo_white_txt.jpeg" srcset="wp-content/uploads/2026/01/logo_white_txt.jpeg 1x, wp-content/uploads/2026/01/logo_white_txt.jpeg 2x" />				</a>
 							</div><!--/span_3-->
 
 			<div class="col span_9 col_last">
@@ -1789,14 +1828,14 @@ Faster Decisions</h4>
 	</div> 
 </div></div>
 		<!-- CTA Banner Section -->
-<div class="wpb_row vc_row-fluid vc_row full-width-content" style="padding: 60px 40px; background: linear-gradient(135deg, #8B5CF6 0%, #D946EF 100%); text-align: center;">
+<div class="wpb_row vc_row-fluid vc_row full-width-content" style="padding: 80px 40px; background: linear-gradient(135deg, #8B5CF6 0%, #D946EF 100%); text-align: center;">
 	<div class="row_col_wrap_12 col span_12 light">
 		<div class="vc_col-sm-12 wpb_column column_container vc_column_container col" style="text-align: center;">
 			<div class="vc_column-inner">
-				<div class="wpb_wrapper" style="max-width: 600px; margin: 0 auto;">
-					<h3 style="font-family: 'Stara', sans-serif; font-weight: 700; color: #ffffff; font-size: 2rem; margin-bottom: 10px;">Signup for our waitlist!</h3>
-					<p style="color: #ffffff; font-size: 1.1rem; margin-bottom: 25px; opacity: 0.9;">Enter to win $1000, given randomly to the first 1000 signups.</p>
-					<a href="https://chekkdlounge.com/s/matthew-schwen" class="nectar-button large regular accent-color regular-button" style="background-color: #ffffff !important; color: #8B5CF6 !important; padding: 15px 40px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-block;" data-track-event="cta_click" data-event-label="banner_join_waitlist">Join the Waitlist</a>
+				<div class="wpb_wrapper" style="max-width: 700px; margin: 0 auto;">
+					<h3 style="font-family: 'Stara', sans-serif; font-weight: 700; color: #ffffff; font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 16px; letter-spacing: -0.02em;">Signup for our waitlist!</h3>
+					<p style="color: #ffffff; font-size: clamp(1.25rem, 2.5vw, 1.5rem); margin-bottom: 32px; opacity: 0.95; line-height: 1.5;">Enter to win $1000, given randomly to the first 1000 signups.</p>
+					<div class="nectar-cta  border_radius_100px alignment_tablet_default alignment_phone_default display_tablet_inherit display_phone_inherit backdrop_filter_blur_13 " data-color="white" data-using-bg="true" data-style="arrow-circle-animation" data-display="inline" data-alignment="center" data-text-color="custom" style="--nectar-text-color: #000000; --nectar-button-color: var(--nectar-white); --nectar-icon-gap: 30px; "><span style="color: #000000;" class="nectar-button-type"><span class="link_wrap" style="padding-top: 4px; padding-right: 4px; padding-bottom: 4px; padding-left: 20px;"><a  class="link_text" role="button" href="https://chekkdlounge.com/s/matthew-schwen" data-track-event="cta_click" data-event-label="banner_join_waitlist"><span class="text">Join the Waitlist</span><div class="arrow-circle-animation-arrow-wrap"><svg class="arrow-circle-animation-arrow" viewBox="0 0 24 24" fill="currentColor"><path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path></svg><svg class="arrow-circle-animation-arrow hover" viewBox="0 0 24 24" fill="currentColor"><path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path></svg></div></a></span></span></div>
 				</div>
 			</div>
 		</div>
@@ -2250,7 +2289,7 @@ Faster Decisions</h4>
 				<!-- Social Icons -->
 				<div class="chekkd-social-icons">
 					<a href="https://instagram.com/chekkdapp" target="_blank" rel="noopener noreferrer" class="chekkd-social-icon" aria-label="Follow CHEKKD on Instagram">
-						<i class="nectar-brands-instagram"></i>
+						<i class="fa fa-instagram"></i>
 					</a>
 					<a href="https://www.linkedin.com/company/chekkd/" target="_blank" rel="noopener noreferrer" class="chekkd-social-icon" aria-label="Connect with CHEKKD on LinkedIn">
 						<i class="fa fa-linkedin"></i>
@@ -2808,5 +2847,56 @@ var nectar_front_i18n = {"menu":"Menu","next":"Next","previous":"Previous","clos
 })();
 </script>
 
-<script></script></body>
+<script>
+// Force mobile styles after page load (fallback for Nectar theme JS overrides)
+(function() {
+  function applyMobileStyles() {
+    if (window.innerWidth <= 999) {
+      // Fix section 4 image - show full phone mockup
+      var section4Img = document.querySelector('.column-image-bg[data-nectar-img-src*="Image_section_04"]');
+      if (section4Img) {
+        section4Img.style.setProperty('background-size', 'contain', 'important');
+        section4Img.style.setProperty('background-position', 'center top', 'important');
+        section4Img.style.setProperty('background-repeat', 'no-repeat', 'important');
+        // Also increase container height
+        var container = section4Img.closest('.vc_col-sm-6[data-using-bg="true"]');
+        if (container) {
+          container.style.setProperty('min-height', '420px', 'important');
+          var divider = container.querySelector('.divider');
+          if (divider) {
+            divider.style.setProperty('height', '420px', 'important');
+          }
+        }
+      }
+
+      // Force logo size on mobile - target mobile-only-logo images
+      var mobileLogos = document.querySelectorAll('#logo .mobile-only-logo');
+      mobileLogos.forEach(function(logo) {
+        logo.style.setProperty('height', '140px', 'important');
+        logo.style.setProperty('max-height', '140px', 'important');
+      });
+      // Also target any visible logo img
+      var allLogos = document.querySelectorAll('#header-outer #logo img');
+      allLogos.forEach(function(logo) {
+        logo.style.setProperty('height', '140px', 'important');
+        logo.style.setProperty('max-height', '140px', 'important');
+      });
+    }
+  }
+
+  // Run on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyMobileStyles);
+  } else {
+    applyMobileStyles();
+  }
+
+  // Also run on window load (after all resources loaded)
+  window.addEventListener('load', applyMobileStyles);
+
+  // Run again after a delay to catch any late JS modifications
+  setTimeout(applyMobileStyles, 500);
+  setTimeout(applyMobileStyles, 1500);
+})();
+</script></body>
 <script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'},{'ap':'cpsh-oh'},{'server':'p3plzcpnl508219'},{'dcenter':'p3'},{'cp_id':'10855404'},{'cp_cl':'8'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script><script src='https://img1.wsimg.com/traffic-assets/js/tccl.min.js'></script></html>
