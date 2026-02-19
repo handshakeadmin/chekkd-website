@@ -43,4 +43,4 @@ next-env.d.ts
 
 # WordPress backup (don't deploy)
 wordpress-backup/
-uploads/
+/uploads/
