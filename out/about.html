@@ -8,6 +8,7 @@
     <meta name="keywords" content="identity verification, CHEKKD, TrustBadge, marketplace verification, fraud prevention, peer-to-peer safety, background check, instant verification">
     <meta name="robots" content="index, follow">
     <meta name="author" content="CHEKKD">
+    <meta name="theme-color" content="#6B05FE">
     <link rel="canonical" href="https://www.chekkd.com/about.html">
 
     <!-- Favicons -->
@@ -60,7 +61,41 @@
     }
     </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Stara Font Family -->
+    <style>
+        @font-face {
+            font-family: 'Stara';
+            src: url('/fonts/Stara-Medium.woff2') format('woff2'),
+                 url('/fonts/Stara-Medium.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Stara';
+            src: url('/fonts/Stara-SemiBold.woff2') format('woff2'),
+                 url('/fonts/Stara-SemiBold.woff') format('woff');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Stara';
+            src: url('/fonts/Stara-Bold.woff2') format('woff2'),
+                 url('/fonts/Stara-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Stara';
+            src: url('/fonts/Stara-ExtraBold.woff2') format('woff2'),
+                 url('/fonts/Stara-ExtraBold.woff') format('woff');
+            font-weight: 800;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
 
     <style>
         * {
@@ -69,73 +104,106 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+            font-family: 'Stara', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fff;
             min-height: 100vh;
-            color: #fff;
+            color: #1a1a2e;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 24px 60px;
+            padding: 0 24px;
         }
 
-        /* Back Button */
-        .back-link {
-            display: inline-flex;
+        /* Header */
+        .header {
+            padding: 16px 0;
+            background: transparent;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 12px;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            margin-bottom: 48px;
-            transition: opacity 0.2s ease;
         }
 
-        .back-link:hover {
-            opacity: 0.8;
-        }
-
-        .back-link svg {
-            width: 20px;
-            height: 20px;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .back-link img {
-            height: 48px;
+        .logo-link img {
+            height: 28px;
             width: auto;
         }
 
-        /* Page Header */
-        .page-header {
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a1a2e;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            color: #6B05FE;
+        }
+
+        .back-home svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-home:hover svg {
+            transform: translateX(-4px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 48px 0 24px;
             text-align: center;
-            margin-bottom: 48px;
         }
 
-        .page-header h1 {
-            font-size: clamp(32px, 6vw, 44px);
+        .hero h1 {
+            font-size: clamp(48px, 10vw, 88px);
             font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.8) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            color: #1a1a2e;
         }
 
-        .page-header p {
+        .hero-subtitle {
             font-size: 18px;
-            color: rgba(255, 255, 255, 0.6);
+            font-weight: 500;
+            color: #555;
+            margin-top: 16px;
             max-width: 500px;
-            margin: 0 auto;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Content Sections */
+        .content-section {
+            padding: 40px 0 80px;
+        }
+
         .section {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #fff;
+            border: 1px solid #eee;
             border-radius: 16px;
             padding: 32px;
             margin-bottom: 24px;
@@ -143,21 +211,24 @@
         }
 
         .section:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(142, 74, 255, 0.2);
+            border-color: rgba(107, 5, 254, 0.2);
+            box-shadow: 0 8px 30px rgba(107, 5, 254, 0.08);
         }
 
         .section h2 {
-            font-size: 22px;
+            font-size: clamp(24px, 4vw, 32px);
             font-weight: 700;
             margin-bottom: 16px;
-            color: #fff;
+            color: #1a1a2e;
+            letter-spacing: -0.02em;
         }
 
         .section p {
             font-size: 16px;
-            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            color: #555;
             margin-bottom: 12px;
+            line-height: 1.75;
         }
 
         .section p:last-child {
@@ -165,7 +236,7 @@
         }
 
         .section strong {
-            color: #fff;
+            color: #1a1a2e;
             font-weight: 600;
         }
 
@@ -175,103 +246,156 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 16px;
             margin-bottom: 24px;
+            background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+            border-radius: 16px;
+            padding: 24px;
         }
 
         .stat-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #fff;
+            border: 1px solid #eee;
             border-radius: 12px;
             padding: 24px 16px;
             text-align: center;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
         }
 
         .stat-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(142, 74, 255, 0.2);
+            transform: translateY(-4px);
+            border-color: rgba(107, 5, 254, 0.2);
+            box-shadow: 0 8px 30px rgba(107, 5, 254, 0.12);
         }
 
         .stat-number {
             font-size: clamp(24px, 5vw, 32px);
             font-weight: 800;
-            color: #8e4aff;
+            color: #6B05FE;
             margin-bottom: 4px;
+            letter-spacing: -0.02em;
         }
 
         .stat-label {
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.5);
+            font-weight: 500;
+            color: #666;
         }
 
         /* CTA Section */
         .cta-section {
+            padding: 64px 24px;
             text-align: center;
-            margin-top: 48px;
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: linear-gradient(135deg, #8B5CF6 0%, #D946EF 100%);
         }
 
-        .cta-section h3 {
-            font-size: 24px;
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: clamp(32px, 5vw, 48px);
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            color: #fff;
+        }
+
+        .cta-content p {
+            font-size: 18px;
+            color: #fff;
+            opacity: 0.95;
+            margin-bottom: 32px;
         }
 
         .cta-button {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 18px 36px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 18px;
-            font-weight: 700;
-            color: #fff;
-            background: linear-gradient(135deg, #8e4aff 0%, #7a3ee6 100%);
-            border: 2px solid #a66dff;
-            border-radius: 12px;
+            padding: 4px 4px 4px 24px;
+            font-family: 'Stara', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+            background: #fff;
+            border: none;
+            border-radius: 100px;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow:
-                0 0 30px rgba(142, 74, 255, 0.4),
-                0 8px 20px rgba(142, 74, 255, 0.3);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .cta-button:hover {
-            background: linear-gradient(135deg, #9d5aff 0%, #8e4aff 100%);
-            border-color: #b47dff;
-            box-shadow:
-                0 0 40px rgba(142, 74, 255, 0.6),
-                0 10px 30px rgba(142, 74, 255, 0.4);
-            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .cta-button svg {
+        .cta-button span {
+            margin-right: 16px;
+        }
+
+        .cta-button .arrow-circle {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #000;
+            border-radius: 50%;
+            overflow: hidden;
+            transition: clip-path 0.55s cubic-bezier(0.12, 0.75, 0.4, 1), background-color 0.55s cubic-bezier(0.12, 0.75, 0.4, 1);
+            clip-path: circle(50% at 50% 50%);
+        }
+
+        .cta-button:hover .arrow-circle {
+            clip-path: circle(45% at 50% 50%);
+        }
+
+        .cta-button .arrow-circle svg {
+            position: absolute;
             width: 18px;
             height: 18px;
-            transition: transform 0.2s ease;
+            color: #fff;
+            fill: #fff;
+            transition: transform 0.55s cubic-bezier(0.12, 0.75, 0.4, 1);
         }
 
-        .cta-button:hover svg {
-            transform: translateX(3px);
+        .cta-button .arrow-circle svg.arrow-hover {
+            transform: translate(-100%, 100%);
+        }
+
+        .cta-button:hover .arrow-circle svg:first-child {
+            transform: translate(100%, -100%);
+        }
+
+        .cta-button:hover .arrow-circle svg.arrow-hover {
+            transform: translate(0, 0);
         }
 
         /* Footer */
         .footer {
-            margin-top: 60px;
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px 0;
+            background: #fff;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-section {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 24px;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .footer-tagline {
+            font-size: 14px;
+            font-weight: 500;
+            color: #888;
+            font-style: italic;
         }
 
         .social-icons {
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
 
         .social-icon {
@@ -280,18 +404,18 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #f5f5f5;
+            border: 1px solid #e8e8e8;
             border-radius: 10px;
-            color: rgba(255, 255, 255, 0.6);
+            color: #555;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
         }
 
         .social-icon:hover {
-            background: #8e4aff;
-            border-color: #8e4aff;
-            color: #fff;
+            background: rgba(107, 5, 254, 0.1);
+            border-color: rgba(107, 5, 254, 0.3);
+            color: #6B05FE;
         }
 
         .social-icon svg {
@@ -299,47 +423,60 @@
             height: 18px;
         }
 
-        .footer-right {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 8px;
-        }
-
         .footer-links {
             display: flex;
-            gap: 8px;
             align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.5);
+            color: #555;
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.2s ease;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: #8e4aff;
+            color: #6B05FE;
         }
 
-        .footer-links span {
-            color: rgba(255, 255, 255, 0.3);
+        .footer-links .separator {
+            color: #ccc;
+            font-size: 10px;
         }
 
         .copyright {
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.4);
+            color: #888;
         }
 
-        /* Mobile */
-        @media (max-width: 640px) {
-            .container {
-                padding: 24px 16px 40px;
+        /* Responsive - Tablet */
+        @media (max-width: 900px) {
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .back-link {
-                margin-bottom: 32px;
+            .stat-card:last-child {
+                grid-column: span 2;
+                max-width: 50%;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-link img {
+                height: 26px;
+            }
+
+            .hero {
+                padding: 32px 0 16px;
+            }
+
+            .content-section {
+                padding: 32px 0 60px;
             }
 
             .section {
@@ -347,7 +484,7 @@
             }
 
             .stats-row {
-                grid-template-columns: 1fr;
+                padding: 16px;
                 gap: 12px;
             }
 
@@ -355,143 +492,788 @@
                 padding: 20px;
             }
 
-            .footer {
+            .cta-section {
+                padding: 48px 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-card:last-child {
+                grid-column: span 1;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 12px 0;
+            }
+
+            .logo-link img {
+                height: 24px;
+            }
+
+            .header-inner {
                 flex-direction: column;
-                align-items: center;
-                text-align: center;
+                gap: 12px;
             }
 
-            .footer-right {
-                align-items: center;
+            .section {
+                padding: 20px 16px;
             }
+        }
 
-            .social-icons {
-                flex-wrap: nowrap;
-                justify-content: center;
-                gap: 6px;
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
             }
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
 
-            .social-icon {
-                width: 32px;
-                height: 32px;
+    <!-- Signup Modal Styles -->
+    <style>
+        .chekkd-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            opacity: 0;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 20px;
+        }
+        .chekkd-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .chekkd-modal-container {
+            position: relative;
+            width: 100%;
+            max-width: 520px;
+            background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+            border: 1px solid rgba(142, 74, 255, 0.2);
+            border-radius: 28px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: scale(0.92) translateY(30px);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+        .chekkd-modal-overlay.active .chekkd-modal-container {
+            transform: scale(1) translateY(0);
+        }
+        .chekkd-modal-bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse 800px 400px at 50% -20%, rgba(142, 74, 255, 0.25) 0%, transparent 60%), linear-gradient(180deg, rgba(142, 74, 255, 0.08) 0%, transparent 100%);
+            border-radius: 28px;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .chekkd-modal-content {
+            position: relative;
+            z-index: 2;
+            padding: 52px 48px 48px;
+            color: #fff;
+        }
+        .chekkd-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 3;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .chekkd-modal-close:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(142, 74, 255, 0.4);
+            transform: rotate(90deg) scale(1.05);
+            box-shadow: 0 6px 16px rgba(142, 74, 255, 0.3);
+        }
+        .chekkd-modal-close:before, .chekkd-modal-close:after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 1.5px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 2px;
+            transition: background 0.3s ease;
+        }
+        .chekkd-modal-close:hover:before, .chekkd-modal-close:hover:after {
+            background: #8e4aff;
+        }
+        .chekkd-modal-close:before { transform: rotate(45deg); }
+        .chekkd-modal-close:after { transform: rotate(-45deg); }
+        .chekkd-form-logo {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 24px;
+        }
+        .chekkd-modal-heading {
+            font-family: 'Stara', sans-serif;
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0 0 32px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.03em;
+        }
+        .chekkd-modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .chekkd-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .chekkd-form-field {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .chekkd-form-field label {
+            font-family: 'Stara', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.95);
+            letter-spacing: -0.01em;
+        }
+        .chekkd-form-field input {
+            width: 100%;
+            padding: 14px 16px;
+            font-family: 'Stara', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+            box-shadow: 0px 2px 3px -1px rgba(0, 0, 0, 0.3), 0px 1px 0px 0px rgba(142, 74, 255, 0.05), 0px 0px 0px 1px rgba(142, 74, 255, 0.08);
+        }
+        .chekkd-form-field input:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(142, 74, 255, 0.15);
+        }
+        .chekkd-form-field input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.06);
+            border-color: #8e4aff;
+            box-shadow: 0px 2px 3px -1px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(142, 74, 255, 0.15), 0px 0px 0px 1px #8e4aff;
+        }
+        .chekkd-form-field input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+            font-weight: 400;
+        }
+        .chekkd-form-field.error input {
+            border-color: #ff4757;
+            background: rgba(255, 71, 87, 0.08);
+            box-shadow: 0 0 0 4px rgba(255, 71, 87, 0.15);
+        }
+        .chekkd-form-field .error-message {
+            font-family: 'Stara', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #ff6b7a;
+            margin-top: 2px;
+            display: none;
+        }
+        .chekkd-form-field.error .error-message {
+            display: block;
+        }
+        .chekkd-modal-submit {
+            width: 100%;
+            padding: 14px 24px;
+            margin-top: 12px;
+            font-family: 'Stara', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #fff;
+            background: linear-gradient(135deg, #8e4aff 0%, #7a3ee6 100%);
+            border: 2px solid #a66dff;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 0 30px rgba(142, 74, 255, 0.5), 0 8px 20px rgba(142, 74, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        .chekkd-modal-submit:hover {
+            background: linear-gradient(135deg, #9d5aff 0%, #8e4aff 100%);
+            border-color: #b47dff;
+            box-shadow: 0 0 40px rgba(142, 74, 255, 0.7), 0 10px 30px rgba(142, 74, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        .chekkd-modal-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .chekkd-modal-submit .arrow-icon {
+            width: 18px;
+            height: 18px;
+            color: #fff;
+            transition: transform 0.2s ease;
+        }
+        .chekkd-modal-submit:hover .arrow-icon {
+            transform: translateX(3px);
+        }
+        .chekkd-modal-submit.loading {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        .chekkd-modal-success {
+            display: none;
+            text-align: center;
+            padding: 48px 24px;
+        }
+        .chekkd-modal-success.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .chekkd-modal-success .success-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8e4aff 0%, #6B05FE 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+        }
+        .chekkd-modal-success .success-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: #fff;
+        }
+        .chekkd-modal-success h3 {
+            font-family: 'Stara', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 0 16px;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+        .chekkd-modal-success p {
+            font-family: 'Stara', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0 0 24px;
+            max-width: 320px;
+            line-height: 1.5;
+        }
+        .chekkd-modal-success .success-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 100px;
+            color: #fff;
+            font-family: 'Stara', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .chekkd-modal-success .success-cta:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        .chekkd-modal-disclaimer {
+            font-family: 'Stara', sans-serif;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.55);
+            text-align: center;
+            margin-top: 20px;
+            line-height: 1.7;
+        }
+        @media only screen and (max-width: 690px) {
+            .chekkd-form-row {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .chekkd-modal-overlay {
+                padding: 8px;
+                align-items: flex-start;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .chekkd-modal-container {
+                border-radius: 16px;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                max-height: none;
+            }
+            .chekkd-modal-content {
+                padding: 40px 20px 24px;
+            }
+            .chekkd-form-logo {
+                max-width: 140px;
+                margin-bottom: 12px;
+            }
+            .chekkd-modal-heading {
+                font-size: 24px;
+                margin-bottom: 16px;
+            }
+            .chekkd-modal-form {
+                gap: 12px;
+            }
+            .chekkd-form-field {
+                gap: 4px;
+            }
+            .chekkd-form-field label {
+                font-size: 14px;
+            }
+            .chekkd-form-field input {
+                padding: 12px 14px;
+                font-size: 16px !important;
+                min-height: auto;
                 border-radius: 8px;
             }
-
-            .social-icon svg {
-                width: 14px;
-                height: 14px;
+            .chekkd-form-field input::placeholder {
+                font-size: 16px !important;
+            }
+            .chekkd-modal-submit {
+                font-size: 15px;
+                padding: 12px 18px;
+                margin-top: 8px;
+            }
+            .chekkd-modal-close {
+                width: 36px;
+                height: 36px;
+                top: 10px;
+                right: 10px;
+            }
+            .chekkd-modal-disclaimer {
+                font-size: 12px;
+                margin-top: 12px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Back Button with Logo -->
-        <a href="/" class="back-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-            <img src="/images/logo.png" alt="CHEKKD">
-        </a>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="/" class="logo-link">
+                    <img src="/wp-content/uploads/2026/01/CHEKKD_Logo_official.png" alt="CHEKKD">
+                </a>
+                <a href="/" class="back-home">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Back
+                </a>
+            </div>
+        </div>
+    </header>
 
-        <!-- Page Header -->
-        <div class="page-header">
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
             <h1>About CHEKKD</h1>
-            <p>Making every online transaction safer through instant identity verification.</p>
+            <p class="hero-subtitle">Making every online transaction safer through instant identity verification.</p>
         </div>
+    </section>
 
-        <!-- What is CHEKKD -->
-        <div class="section">
-            <h2>What is CHEKKD?</h2>
-            <p>CHEKKD is a next-generation <strong>identity verification platform</strong> designed specifically for marketplaces, hiring platforms, and peer-to-peer transactions. Our mission is simple: make every online transaction safer by ensuring you know who you're dealing with before money changes hands.</p>
-            <p>Unlike traditional background check services that take days and cost hundreds of dollars, CHEKKD delivers instant verification results through our proprietary TrustBadge technology. Whether you're buying a car on Facebook Marketplace, hiring a contractor, or renting out your apartment, CHEKKD gives you peace of mind in seconds.</p>
-        </div>
-
-        <!-- Stats -->
-        <div class="stats-row">
-            <div class="stat-card">
-                <div class="stat-number">$30B+</div>
-                <div class="stat-label">Lost to scams annually</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">$12B</div>
-                <div class="stat-label">Marketplace fraud</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">40%</div>
-                <div class="stat-label">Higher conversion</div>
-            </div>
-        </div>
-
-        <!-- How It Works -->
-        <div class="section">
-            <h2>How Identity Verification Works</h2>
-            <p>Our <strong>identity verification process</strong> combines multiple data points to create a comprehensive trust profile. Users complete a quick verification that includes government ID validation, bank verification, and employment verification through Plaid. The result is a verified TrustBadge that can be shared across any platform.</p>
-            <p>For businesses and platforms, CHEKKD offers seamless API integration that adds verification capabilities without disrupting user experience. Our system processes thousands of verifications per second while maintaining bank-level security and full compliance with data protection regulations.</p>
-        </div>
-
-        <!-- Who Uses CHEKKD -->
-        <div class="section">
-            <h2>Who Uses CHEKKD?</h2>
-            <p><strong>Marketplace platforms</strong> integrate CHEKKD to reduce fraud and build buyer confidence. When users see a verified TrustBadge, conversion rates increase by up to 40% because trust removes friction from transactions.</p>
-            <p><strong>Individual sellers and buyers</strong> use CHEKKD to protect themselves in peer-to-peer transactions. Before meeting a stranger from Craigslist or accepting a rental application, smart users verify identity first.</p>
-            <p><strong>Hiring platforms and employers</strong> rely on CHEKKD for streamlined candidate verification. Our instant checks replace weeks of waiting, helping companies onboard faster while maintaining compliance.</p>
-        </div>
-
-        <!-- Why Choose CHEKKD -->
-        <div class="section">
-            <h2>Why Choose CHEKKD?</h2>
-            <p>Online scams cost consumers over $30 billion annually, and marketplace fraud accounts for $12 billion of that loss. CHEKKD exists to change these statistics by making verification accessible, affordable, and instant.</p>
-            <p>Our platform stands out through <strong>speed</strong> (verification in seconds, not days), <strong>portability</strong> (one verification works across multiple platforms), and <strong>privacy</strong> (users control what information is shared). We believe trust should be universal, not siloed.</p>
-        </div>
-
-        <!-- CTA -->
-        <div class="cta-section">
-            <h3>Ready to get verified?</h3>
-            <a href="/" class="cta-button" onclick="event.preventDefault(); window.location.href='/'; setTimeout(() => { const modal = document.getElementById('chekkd-signup-modal'); if(modal) modal.classList.add('active'); }, 100);">
-                <span>Join the Waitlist</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <div class="social-icons">
-                <a href="https://www.facebook.com/share/18HvpV8Q85/" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                </a>
-                <a href="https://twitter.com/chekkdapp" target="_blank" rel="noopener" class="social-icon" aria-label="Twitter">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
-                <a href="https://instagram.com/chekkdapp" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
-                <a href="https://www.tiktok.com/@chekkdapp" target="_blank" rel="noopener" class="social-icon" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg>
-                </a>
-                <a href="https://youtube.com/@chekkd" target="_blank" rel="noopener" class="social-icon" aria-label="YouTube">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/company/chekkd/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
+    <!-- Content Sections -->
+    <section class="content-section">
+        <div class="container">
+            <!-- What is CHEKKD -->
+            <div class="section">
+                <h2>What is CHEKKD?</h2>
+                <p>A complete trust layer that combines government-level verification with behavioral scoring. Get verified, and build your Trust Score™ because we believe you shouldn't have to expose yourself to prove yourself.</p>
+                <p>Unlike traditional background check services that take days and cost hundreds of dollars, CHEKKD delivers instant verification results through our proprietary TrustBadge technology. Whether you're buying a car on Facebook Marketplace, hiring a contractor, or renting out your apartment, CHEKKD gives you peace of mind in seconds.</p>
             </div>
 
-            <div class="footer-right">
+            <!-- Stats -->
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-number">$30B+</div>
+                    <div class="stat-label">Lost to scams annually</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$12B</div>
+                    <div class="stat-label">Marketplace fraud</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-label">Higher conversion</div>
+                </div>
+            </div>
+
+            <!-- How It Works -->
+            <div class="section">
+                <h2>How Identity Verification Works</h2>
+                <p>Our <strong>identity verification process</strong> combines multiple data points to create a comprehensive trust profile. Users complete a quick verification that includes government ID validation, bank verification, and employment verification through Plaid. The result is a verified TrustBadge that can be shared across any platform.</p>
+                <p>For businesses and platforms, CHEKKD offers seamless API integration that adds verification capabilities without disrupting user experience. Our system processes thousands of verifications per second while maintaining bank-level security and full compliance with data protection regulations.</p>
+            </div>
+
+            <!-- Who Uses CHEKKD -->
+            <div class="section">
+                <h2>Who Uses CHEKKD?</h2>
+                <p><strong>Marketplace platforms</strong> integrate CHEKKD to reduce fraud and build buyer confidence. When users see a verified TrustBadge, conversion rates increase by up to 40% because trust removes friction from transactions.</p>
+                <p><strong>Individual sellers and buyers</strong> use CHEKKD to protect themselves in peer-to-peer transactions. Before meeting a stranger from Craigslist or accepting a rental application, smart users verify identity first.</p>
+                <p><strong>Hiring platforms and employers</strong> rely on CHEKKD for streamlined candidate verification. Our instant checks replace weeks of waiting, helping companies onboard faster while maintaining compliance.</p>
+            </div>
+
+            <!-- Why Choose CHEKKD -->
+            <div class="section">
+                <h2>Why Choose CHEKKD?</h2>
+                <p>Online scams cost consumers over $30 billion annually, and marketplace fraud accounts for $12 billion of that loss. CHEKKD exists to change these statistics by making verification accessible, affordable, and instant.</p>
+                <p>Our platform stands out through <strong>speed</strong> (verification in seconds, not days), <strong>portability</strong> (one verification works across multiple platforms), and <strong>privacy</strong> (users control what information is shared). We believe trust should be universal, not siloed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to get verified?</h2>
+                <p>Join the waitlist and be among the first to experience trust, verified.</p>
+                <button class="cta-button" data-open-modal="signup">
+                    <span>Join the Waitlist</span>
+                    <div class="arrow-circle">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="arrow-hover">
+                            <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-section">
+                <div class="footer-tagline">Because "Trust Me" is for dare-devils...</div>
+                <div class="social-icons">
+                    <a href="https://instagram.com/chekkdapp" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/chekkd/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/share/18HvpV8Q85/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/chekkdapp" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="X">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                </div>
                 <div class="footer-links">
                     <a href="/about.html">About</a>
-                    <span>•</span>
-                    <a href="/privacy-policy.html">Privacy Policy</a>
-                    <span>•</span>
-                    <a href="/terms-of-service.html">Terms of Service</a>
-                    <span>•</span>
-                    <a href="https://chekkdlounge.com/" target="_blank" rel="noopener">CHEKKD Lounge</a>
+                    <span class="separator">•</span>
+                    <a href="/team.html">Team</a>
+                    <span class="separator">•</span>
+                    <a href="/privacy-policy.html">Privacy</a>
+                    <span class="separator">•</span>
+                    <a href="/terms-of-service.html">Terms</a>
+                    <span class="separator">•</span>
+                    <a href="https://chekkdlounge.com/" target="_blank" rel="noopener">Lounge</a>
                 </div>
-                <div class="copyright">© 2026 CHEKKD. All rights reserved.</div>
+                <div class="copyright">&copy; 2026 CHEKKD. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Signup Modal -->
+    <div class="chekkd-modal-overlay" id="chekkd-signup-modal" role="dialog" aria-labelledby="signup-modal-title" aria-modal="true">
+        <div class="chekkd-modal-container">
+            <div class="chekkd-modal-bg-overlay"></div>
+            <button class="chekkd-modal-close" id="signup-modal-close-btn" aria-label="Close modal"></button>
+            <div class="chekkd-modal-content">
+                <div id="signup-modal-form-view">
+                    <img src="/wp-content/uploads/2026/01/CHEKKD_Logo_official.png" alt="CHEKKD" class="chekkd-form-logo">
+                    <h2 class="chekkd-modal-heading" id="signup-modal-title">Join the Waitlist</h2>
+                    <form class="chekkd-modal-form" id="chekkd-signup-modal-form" novalidate>
+                        <div class="chekkd-form-row">
+                            <div class="chekkd-form-field" data-field="firstName">
+                                <label for="signup-modal-first-name">First name</label>
+                                <input type="text" id="signup-modal-first-name" name="first_name" placeholder="Tyler" required aria-required="true">
+                                <span class="error-message">Please enter your first name</span>
+                            </div>
+                            <div class="chekkd-form-field" data-field="lastName">
+                                <label for="signup-modal-last-name">Last name</label>
+                                <input type="text" id="signup-modal-last-name" name="last_name" placeholder="Durden" required aria-required="true">
+                                <span class="error-message">Please enter your last name</span>
+                            </div>
+                        </div>
+                        <div class="chekkd-form-field" data-field="email">
+                            <label for="signup-modal-email">Email address</label>
+                            <input type="email" id="signup-modal-email" name="email" placeholder="projectmayhem@fc.com" required aria-required="true">
+                            <span class="error-message">Please enter a valid email address</span>
+                        </div>
+                        <div class="chekkd-form-field" data-field="phone">
+                            <label for="signup-modal-phone">Phone number</label>
+                            <input type="tel" id="signup-modal-phone" name="phone" placeholder="(555) 000-0000" aria-required="false">
+                            <span class="error-message">Please enter a valid phone number</span>
+                        </div>
+                        <button type="submit" class="chekkd-modal-submit" id="signup-modal-submit-btn">
+                            <span class="button-text">Sign up</span>
+                            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                        <p class="chekkd-modal-disclaimer">By signing up, you agree to receive communications about Chekkd events.</p>
+                    </form>
+                </div>
+                <div class="chekkd-modal-success" id="signup-modal-success-view">
+                    <div class="success-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>You're on the list!</h3>
+                    <p>We'll notify you when CHEKKD launches. Get ready to verify people and act with confidence.</p>
+                    <a href="https://chekkdlounge.com/" target="_blank" rel="noopener" class="success-cta">
+                        Visit the Lounge
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 6v2H5v11h11v-5h2v6a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1h6zm11-3v8h-2V6.413l-7.793 7.794-1.414-1.414L17.585 5H13V3h8z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Signup Modal JavaScript -->
+    <script>
+    (function() {
+        'use strict';
+
+        var signupModal = document.getElementById('chekkd-signup-modal');
+        var signupModalForm = document.getElementById('chekkd-signup-modal-form');
+        var signupModalCloseBtn = document.getElementById('signup-modal-close-btn');
+        var signupModalSubmitBtn = document.getElementById('signup-modal-submit-btn');
+        var signupFormView = document.getElementById('signup-modal-form-view');
+        var signupSuccessView = document.getElementById('signup-modal-success-view');
+
+        var signupFields = {
+            firstName: document.getElementById('signup-modal-first-name'),
+            lastName: document.getElementById('signup-modal-last-name'),
+            email: document.getElementById('signup-modal-email'),
+            phone: document.getElementById('signup-modal-phone')
+        };
+
+        function formatPhoneNumber(value) {
+            var cleaned = ('' + value).replace(/\D/g, '');
+            var match = cleaned.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/);
+            if (!match) return value;
+            if (match[1] && match[2] && match[3]) {
+                return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+            } else if (match[1] && match[2]) {
+                return '(' + match[1] + ') ' + match[2];
+            } else if (match[1]) {
+                return '(' + match[1];
+            }
+            return value;
+        }
+
+        signupFields.phone.addEventListener('input', function(e) {
+            var cursorPos = this.selectionStart;
+            var oldLength = this.value.length;
+            this.value = formatPhoneNumber(this.value);
+            var newLength = this.value.length;
+            var diff = newLength - oldLength;
+            this.setSelectionRange(cursorPos + diff, cursorPos + diff);
+        });
+
+        function openSignupModal() {
+            signupModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            signupFields.firstName.focus();
+        }
+
+        function closeSignupModal() {
+            signupModal.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(function() {
+                signupModalForm.reset();
+                document.querySelectorAll('#chekkd-signup-modal .chekkd-form-field').forEach(function(field) {
+                    field.classList.remove('error', 'success');
+                });
+                signupFormView.style.display = 'block';
+                signupSuccessView.classList.remove('active');
+                signupModalSubmitBtn.classList.remove('loading');
+            }, 400);
+        }
+
+        function validateSignupField(fieldName, value) {
+            var fieldElement = document.querySelector('#chekkd-signup-modal [data-field="' + fieldName + '"]');
+            var isValid = false;
+            switch(fieldName) {
+                case 'firstName':
+                case 'lastName':
+                    isValid = value.trim().length >= 2;
+                    break;
+                case 'email':
+                    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    isValid = emailRegex.test(value);
+                    break;
+                case 'phone':
+                    if (value.trim().length === 0) {
+                        isValid = true;
+                    } else {
+                        var phoneRegex = /^[0-9\-\+\(\)\s]{10,}$/;
+                        isValid = phoneRegex.test(value);
+                    }
+                    break;
+            }
+            if (isValid) {
+                fieldElement.classList.remove('error');
+                fieldElement.classList.add('success');
+            } else if (value.length > 0) {
+                fieldElement.classList.add('error');
+                fieldElement.classList.remove('success');
+            } else {
+                fieldElement.classList.remove('error', 'success');
+            }
+            return isValid;
+        }
+
+        Object.keys(signupFields).forEach(function(fieldName) {
+            signupFields[fieldName].addEventListener('input', function() {
+                var fieldElement = document.querySelector('#chekkd-signup-modal [data-field="' + fieldName + '"]');
+                fieldElement.classList.remove('error', 'success');
+            });
+        });
+
+        signupModalForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var isValid = true;
+            var formData = {};
+            Object.keys(signupFields).forEach(function(fieldName) {
+                var value = signupFields[fieldName].value;
+                formData[fieldName] = value;
+                if (!validateSignupField(fieldName, value)) {
+                    isValid = false;
+                }
+            });
+            if (!isValid) {
+                var firstError = document.querySelector('#chekkd-signup-modal .chekkd-form-field.error');
+                if (firstError) {
+                    firstError.querySelector('input').focus();
+                }
+                return;
+            }
+            signupModalSubmitBtn.classList.add('loading');
+            signupModalSubmitBtn.disabled = true;
+
+            var CLICKUP_API_TOKEN = 'pk_168268922_YMF9HVKTNMLTPEL50T2V0IW3S6IALQ8T';
+            var CLICKUP_LIST_ID = '901706927077';
+            var taskName = formData.firstName + ' ' + formData.lastName + ' - Waitlist Signup';
+            var taskDescription = '**Email:** ' + formData.email + '\n**Phone:** ' + (formData.phone || 'Not provided') + '\n\n**Source:** CHEKKD Website About Page\n**Signup Date:** ' + new Date().toISOString();
+
+            fetch('https://api.clickup.com/api/v2/list/' + CLICKUP_LIST_ID + '/task', {
+                method: 'POST',
+                headers: {
+                    'Authorization': CLICKUP_API_TOKEN,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: taskName,
+                    description: taskDescription,
+                    tags: ['chekkd_waitlist'],
+                    status: 'new'
+                })
+            })
+            .then(function(response) {
+                if (!response.ok) throw new Error('ClickUp API error');
+                return response.json();
+            })
+            .then(function(data) {
+                signupFormView.style.display = 'none';
+                signupSuccessView.classList.add('active');
+                signupModalSubmitBtn.classList.remove('loading');
+                signupModalSubmitBtn.disabled = false;
+                console.log('Successfully joined waitlist - Task created in ClickUp:', data.id);
+            })
+            .catch(function(error) {
+                console.error('Error submitting to ClickUp:', error);
+                signupModalSubmitBtn.classList.remove('loading');
+                signupModalSubmitBtn.disabled = false;
+                alert('Sorry, there was an error submitting your information. Please try again or contact us directly.');
+            });
+        });
+
+        signupModalCloseBtn.addEventListener('click', closeSignupModal);
+
+        signupModal.addEventListener('click', function(e) {
+            if (e.target === signupModal) {
+                closeSignupModal();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && signupModal.classList.contains('active')) {
+                closeSignupModal();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var signupButtons = document.querySelectorAll('[data-open-modal="signup"]');
+            signupButtons.forEach(function(button) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openSignupModal();
+                });
+            });
+        });
+    })();
+    </script>
 </body>
 </html>
