@@ -4,7 +4,7 @@
   "description": "CHEKKD marketing website - Trust, Verified",
   "private": true,
   "scripts": {
-    "dev": "npx serve out -p 3000",
+    "dev": "npx serve out -p 0",
     "start": "npx serve out",
     "deploy": "vercel --prod",
     "deploy:preview": "vercel",
