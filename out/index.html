@@ -503,7 +503,7 @@ header#top .col.span_3,
 .chekkd-modal-content {
   position: relative;
   z-index: 2;
-  padding: 52px 48px 48px;
+  padding: 40px 48px 48px;
   color: #fff;
 }
 
@@ -568,7 +568,7 @@ header#top .col.span_3,
   width: 100%;
   height: auto;
   display: block;
-  margin: 0 auto 24px;
+  margin: 0 auto 16px;
   animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0s backwards;
 }
 
@@ -578,7 +578,7 @@ header#top .col.span_3,
   font-size: clamp(28px, 4vw, 36px);
   font-weight: 700;
   line-height: 1.1;
-  margin: 0 0 32px 0;
+  margin: 0 0 24px 0;
   text-align: center;
   background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.8) 100%);
   -webkit-background-clip: text;
@@ -2830,6 +2830,10 @@ var nectar_front_i18n = {"menu":"Menu","next":"Next","previous":"Previous","clos
     const waitlistButtons = document.querySelectorAll('a[href*="chekkdlounge.com"], a[href*="waitlist"]');
 
     waitlistButtons.forEach(function(button) {
+      // Skip the footer "Lounge" link - let it navigate normally
+      if (button.textContent.trim() === 'Lounge' || button.textContent.trim() === 'Visit the Lounge') {
+        return;
+      }
       button.addEventListener('click', function(e) {
         e.preventDefault();
         openModal();
