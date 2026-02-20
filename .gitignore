@@ -5,8 +5,8 @@ node_modules/
 
 # Build outputs
 .next/
-build/
-dist/
+/build/
+/dist/
 # Note: out/ is committed because it contains the pre-built static site for Vercel
 
 # Local env files
@@ -43,4 +43,3 @@ next-env.d.ts
 
 # WordPress backup (don't deploy)
 wordpress-backup/
-/uploads/
